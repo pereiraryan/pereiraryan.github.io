@@ -145,6 +145,11 @@ table {
 .alignright {
     float: right;
 }
+.aligncenter {
+    text-align: center;
+    margin: 50px auto;
+    display: block !important;
+}
 
 .margin-bottom-10 {
     margin-bottom: 10px;
@@ -407,6 +412,9 @@ footer p {
 .ul-posts, ul-tweets {
     margin: 25px 0 0 0;
     font-family: fantasy;
+}
+.ul-tweets {
+    background: #fff;
 }
 .reddish-bg {
     background: url('../img/block.png') no-repeat;

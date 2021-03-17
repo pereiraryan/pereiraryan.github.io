@@ -373,7 +373,10 @@
             
                 function populate_Delhi(djsonObj) {
                   const del_weekly = djsonObj['daily'];
-                  for(let i = 0; i < del_weekly.length; i++) {
+                  const weekDiv = document.createElement('div');
+                  const weekSpan = document.createElement('span');
+                  weekSpan.textContent = `Today :${del_weekly[0].temp.day}º`;
+                  for(let i = 1; i < del_weekly.length; i++) {
                     const weekDiv = document.createElement('div');
                     const weekSpan = document.createElement('span');
             

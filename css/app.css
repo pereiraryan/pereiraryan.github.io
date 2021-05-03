@@ -427,4 +427,14 @@ body {
   color: #fff;
 }
 
+@media (max-width: 960px) {
+  .about, .call-to-action, .widget {
+    width: 100%;
+  }
+
+  .footer-wrapper {
+    display: block;
+  }
+}
+
 /*# sourceMappingURL=app.css.map */

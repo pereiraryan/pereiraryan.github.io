@@ -436,5 +436,14 @@ body {
     display: block;
   }
 }
+@media only screen and (max-width: 300px) {
+  .about, .call-to-action, .widget {
+    width: 100%;
+  }
+
+  .footer-wrapper {
+    display: block;
+  }
+}
 
 /*# sourceMappingURL=app.css.map */

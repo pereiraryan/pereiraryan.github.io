@@ -427,7 +427,7 @@ body {
   color: #fff;
 }
 
-@media (max-width: 960px) {
+@media only screen and (max-width: 960px) {
   .about, .call-to-action, .widget {
     width: 100%;
   }

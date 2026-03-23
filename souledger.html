@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoulLedger — Your Life, Fully Accounted For</title>
+  <meta name="description" content="SoulLedger is the first holistic life-tracking system that measures what actually matters — meaning, emotions, relationships, growth, and more. Join the waitlist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --ink:       #0f0e0c;
+      --parchment: #f5f1eb;
+      --cream:     #faf8f4;
+      --gold:      #b8943f;
+      --gold-lt:   #d4aa5a;
+      --rust:      #8b3a2a;
+      --sage:      #4a5c4e;
+      --fog:       #c8c2b8;
+      --muted:     #7a7469;
+
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'DM Sans', sans-serif;
+      --mono:  'DM Mono', monospace;
+
+      --max: 1100px;
+      --rad: 2px;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--gold); color: #fff; }
+
+    /* ── UTILITY ── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: .25rem .75rem;
+      border-radius: 40px;
+    }
+    .rule { width: 48px; height: 1px; background: var(--gold); display: block; }
+    .rule.center { margin: 0 auto; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border-radius: var(--rad);
+      cursor: pointer;
+      transition: all .25s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--cream);
+    }
+    .btn-primary:hover { background: var(--gold); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,148,63,.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .btn-outline:hover { background: var(--ink); color: var(--cream); }
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+    }
+    .btn-gold:hover { background: #a07a30; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(184,148,63,.4); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 0;
+      background: rgba(250,248,244,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,194,184,.3);
+    }
+    nav .wrap { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; align-items: center; }
+    .nav-links a {
+      font-size: .82rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 10rem 0 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 30%, rgba(184,148,63,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(74,92,78,.05) 0%, transparent 55%),
+        var(--cream);
+    }
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 0; opacity: .4;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.08'/%3E%3C/svg%3E");
+    }
+    .hero-decor {
+      position: absolute;
+      right: 4%;
+      top: 18%;
+      width: 420px;
+      height: 420px;
+      border: 1px solid rgba(184,148,63,.15);
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .hero-decor::after {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(184,148,63,.08);
+      border-radius: 50%;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 780px; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.2rem; }
+    .hero-eyebrow .rule { flex-shrink: 0; }
+    .hero-eyebrow span {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      margin-bottom: 1.8rem;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+    .hero-cta { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+    .hero-note {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      color: var(--fog);
+      text-transform: uppercase;
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 4%;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      color: var(--fog);
+    }
+    .hero-scroll span { font-family: var(--mono); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; writing-mode: vertical-rl; }
+    .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollDown 2s ease-in-out infinite; }
+    @keyframes scrollDown { 0%,100%{transform:scaleY(1);transform-origin:top} 50%{transform:scaleY(.5);transform-origin:bottom} }
+
+    /* ── BELIEF BAR ── */
+    #belief {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 1.4rem 0;
+      overflow: hidden;
+    }
+    .ticker {
+      display: flex;
+      gap: 4rem;
+      white-space: nowrap;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-item {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: italic;
+      font-weight: 300;
+      flex-shrink: 0;
+      opacity: .7;
+    }
+    .ticker-item strong { font-style: normal; color: var(--gold-lt); font-weight: 400; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTIONS BASE ── */
+    section { padding: 7rem 0; }
+    .section-head { margin-bottom: 4rem; }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-top: 1rem;
+    }
+    .section-head h2 em { font-style: italic; color: var(--gold); }
+    .section-head p {
+      margin-top: 1rem;
+      color: var(--muted);
+      max-width: 540px;
+      font-size: .95rem;
+    }
+
+    /* ── PROBLEM ── */
+    #problem { background: var(--parchment); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 1.6rem; }
+    .problem-list li {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .p-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border: 1px solid var(--fog);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      margin-top: .2rem;
+    }
+    .problem-list li p { font-size: .93rem; color: var(--muted); line-height: 1.65; }
+    .problem-list li strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: .2rem; }
+    .problem-right {
+      padding: 3rem;
+      border: 1px solid rgba(184,148,63,.2);
+      background: var(--cream);
+      position: relative;
+    }
+    .problem-right::before {
+      content: '"';
+      font-family: var(--serif);
+      font-size: 7rem;
+      color: var(--gold);
+      opacity: .15;
+      position: absolute;
+      top: -1rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+    .problem-quote {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 300;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .problem-quote-attr {
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ── SOLUTION ── */
+    #solution {
+      position: relative;
+      overflow: hidden;
+    }
+    .solution-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: rgba(184,148,63,.08);
+      border: 1px solid rgba(184,148,63,.2);
+      padding: .5rem 1.2rem;
+      border-radius: 40px;
+      margin-bottom: 2rem;
+    }
+    .solution-badge span { font-family: var(--mono); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); }
+    .solution-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .solution-visual {
+      background: var(--ink);
+      border-radius: 4px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .solution-visual::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,148,63,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ledger-label {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    .ledger-rows { display: flex; flex-direction: column; gap: .6rem; }
+    .ledger-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .7rem 1rem;
+      border-radius: 2px;
+      background: rgba(255,255,255,.04);
+      border-left: 2px solid transparent;
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: rgba(255,255,255,.6);
+      transition: all .2s;
+    }
+    .ledger-row:hover { background: rgba(255,255,255,.07); border-left-color: var(--gold); color: rgba(255,255,255,.9); }
+    .ledger-row .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .dot-green  { background: #5fbe8a; }
+    .dot-blue   { background: #5b9bd5; }
+    .dot-amber  { background: var(--gold); }
+    .dot-rose   { background: #c4736b; }
+    .dot-violet { background: #9b72cf; }
+    .dot-teal   { background: #4aab9b; }
+    .dot-fog    { background: var(--fog); }
+    .ledger-row .val { color: rgba(255,255,255,.35); font-size: .68rem; }
+    .solution-text h2 { margin-bottom: 1.5rem; }
+    .solution-text p { font-size: .95rem; color: var(--muted); margin-bottom: 1.2rem; line-height: 1.8; }
+
+    /* ── FEATURES ── */
+    #features { background: var(--ink); color: var(--cream); }
+    #features .section-head h2 { color: var(--cream); }
+    #features .section-head h2 em { color: var(--gold-lt); }
+    #features .section-head p { color: rgba(255,255,255,.45); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .feature-card {
+      padding: 3rem 2.5rem;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .feature-card:hover { background: #1a1915; }
+    .feature-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 2rem; right: 2.5rem;
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      color: rgba(255,255,255,.12);
+    }
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .feature-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: .8rem;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+    .feature-card p { font-size: .88rem; color: rgba(255,255,255,.45); line-height: 1.75; }
+    .feature-card .feature-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid rgba(184,148,63,.3);
+      padding-bottom: .1rem;
+    }
+
+    /* ── DIMENSIONS ── */
+    #dimensions { background: var(--parchment); }
+    .dim-intro { max-width: 600px; margin-bottom: 4rem; }
+    .dim-intro h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.2; }
+    .dim-intro h2 em { font-style: italic; color: var(--gold); }
+    .dim-intro p { margin-top: 1rem; color: var(--muted); font-size: .93rem; }
+    .dim-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .dim-card {
+      padding: 2rem 1.8rem;
+      border: 1px solid rgba(184,148,63,.12);
+      background: var(--cream);
+      border-radius: var(--rad);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .dim-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.06); }
+    .dim-emoji { font-size: 1.5rem; margin-bottom: 1rem; }
+    .dim-card h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: .4rem; }
+    .dim-card p { font-size: .82rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── SOCIAL PROOF ── */
+    #proof { position: relative; }
+    .proof-note {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--fog);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .tcard {
+      padding: 2.5rem;
+      border: 1px solid rgba(200,194,184,.4);
+      background: var(--cream);
+      border-radius: var(--rad);
+      position: relative;
+      transition: box-shadow .25s;
+    }
+    .tcard:hover { box-shadow: 0 10px 40px rgba(0,0,0,.07); }
+    .tcard-stars { color: var(--gold); letter-spacing: .1em; font-size: .9rem; margin-bottom: 1.5rem; }
+    .tcard-text {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 300;
+      line-height: 1.65;
+      font-style: italic;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+    .tcard-author { display: flex; align-items: center; gap: 1rem; }
+    .tcard-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .tcard-name { font-size: .85rem; font-weight: 500; }
+    .tcard-role { font-size: .75rem; color: var(--muted); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--parchment); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: center; }
+    .about-img-wrap {
+      position: relative;
+    }
+    .about-img-placeholder {
+      width: 100%;
+      padding-bottom: 120%;
+      background: var(--ink);
+      border-radius: var(--rad);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img-placeholder::after {
+      content: 'RP';
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: .3;
+    }
+    .about-frame {
+      position: absolute;
+      inset: -16px -16px auto auto;
+      width: 60%; height: 60%;
+      border: 1px solid rgba(184,148,63,.25);
+      border-radius: var(--rad);
+      pointer-events: none;
+    }
+    .about-text .section-head { margin-bottom: 2rem; }
+    .about-text p { font-size: .95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
+    .about-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
+    .chip {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .35rem .9rem;
+      border-radius: 40px;
+      border: 1px solid rgba(184,148,63,.25);
+      color: var(--muted);
+    }
+
+    /* ── PRICING ── */
+    #pricing {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+    }
+    #pricing .section-head { text-align: center; }
+    #pricing .section-head h2 { color: var(--cream); }
+    #pricing .section-head h2 em { color: var(--gold-lt); }
+    #pricing .section-head p { color: rgba(255,255,255,.45); margin: 0 auto; }
+    .pricing-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 760px; margin: 0 auto; }
+    .pcard {
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--rad);
+      text-align: left;
+      transition: border-color .25s;
+    }
+    .pcard:hover { border-color: rgba(184,148,63,.4); }
+    .pcard.featured {
+      border-color: var(--gold);
+      background: rgba(184,148,63,.05);
+      position: relative;
+    }
+    .pcard.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px; right: 2rem;
+      background: var(--gold);
+      color: #fff;
+      font-family: var(--mono);
+      font-size: .62rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .25rem .8rem;
+    }
+    .pcard-name { font-family: var(--mono); font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .pcard-price { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: var(--cream); margin-bottom: .4rem; }
+    .pcard-cycle { font-size: .8rem; color: rgba(255,255,255,.35); margin-bottom: 2rem; }
+    .pcard-features { list-style: none; display: flex; flex-direction: column; gap: .9rem; margin-bottom: 2.5rem; }
+    .pcard-features li { font-size: .88rem; color: rgba(255,255,255,.55); display: flex; align-items: center; gap: .8rem; }
+    .pcard-features li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+    /* ── FAQ ── */
+    #faq { background: var(--parchment); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .faq-item { border-bottom: 1px solid rgba(200,194,184,.5); padding-bottom: 2rem; }
+    .faq-item h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 400; margin-bottom: .8rem; line-height: 1.4; }
+    .faq-item p { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── WAITLIST ── */
+    #waitlist {
+      background: var(--ink);
+      color: var(--cream);
+      text-align: center;
+      padding: 8rem 0;
+    }
+    .waitlist-inner { max-width: 600px; margin: 0 auto; }
+    .waitlist-inner h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 300; line-height: 1.15; color: var(--cream); margin: 1rem 0; }
+    .waitlist-inner h2 em { font-style: italic; color: var(--gold-lt); }
+    .waitlist-inner p { color: rgba(255,255,255,.45); font-size: .95rem; margin-bottom: 2.5rem; }
+    .waitlist-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto 1.5rem; }
+    .waitlist-form input {
+      flex: 1;
+      padding: .95rem 1.4rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      border-right: none;
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: .9rem;
+      border-radius: 2px 0 0 2px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .waitlist-form input::placeholder { color: rgba(255,255,255,.25); }
+    .waitlist-form input:focus { border-color: var(--gold); }
+    .waitlist-form button {
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      padding: .95rem 1.8rem;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 0 2px 2px 0;
+      white-space: nowrap;
+      transition: background .2s;
+    }
+    .waitlist-form button:hover { background: #a07a30; }
+    .waitlist-privacy { font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.2); }
+    .counter-wrap { margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .counter-badge { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); }
+    .counter-badge strong { color: var(--gold-lt); }
+
+    /* ── CONTACT ── */
+    #contact { padding: 5rem 0; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
+    .contact-text h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; }
+    .contact-text p { font-size: .88rem; color: var(--muted); margin-top: .5rem; }
+    .contact-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .contact-link {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .7rem 1.4rem;
+      border: 1px solid rgba(200,194,184,.5);
+      border-radius: var(--rad);
+      color: var(--muted);
+      transition: all .2s;
+    }
+    .contact-link:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.3);
+      padding: 3rem 0;
+    }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo { font-family: var(--serif); font-size: 1.2rem; color: rgba(255,255,255,.5); }
+    .footer-logo span { color: var(--gold); }
+    .footer-links { display: flex; gap: 2rem; }
+    .footer-links a { font-family: var(--mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.25); transition: color .2s; }
+    .footer-links a:hover { color: rgba(255,255,255,.6); }
+    .footer-copy { font-family: var(--mono); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .problem-grid, .solution-columns, .about-grid, .features-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .dim-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials { grid-template-columns: 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; max-width: 400px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .hero-decor { display: none; }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .dim-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .waitlist-form { flex-direction: column; }
+      .waitlist-form input { border-right: 1px solid rgba(255,255,255,.12); border-radius: 2px; }
+      .waitlist-form button { border-radius: 2px; }
+    }
+
+    /* ── SUCCESS MSG ── */
+    .success-msg {
+      display: none;
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #5fbe8a;
+      margin-top: .8rem;
+    }
+    .success-msg.show { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║            NAV               ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<nav>
+  <div class="wrap">
+    <div class="nav-logo">Soul<span>Ledger</span></div>
+    <div class="nav-links">
+      <a href="#problem">Why</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#waitlist" class="btn btn-primary" style="padding:.55rem 1.4rem;font-size:.75rem;">Join Waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║            HERO              ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-decor"></div>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="rule"></span>
+        <span>Coming Soon · Waitlist Open</span>
+      </div>
+      <h1>
+        Your life is more<br/>than a <em>to-do list.</em><br/>
+        Start tracking what<br/>actually <em>matters.</em>
+      </h1>
+      <p class="hero-sub">
+        SoulLedger is the first holistic life-tracking system built for people
+        who refuse to reduce their existence to productivity scores. Body, mind,
+        relationships, money, meaning — all of it, in one intelligent journal.
+      </p>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn btn-primary">Join the Waitlist — It's Free</a>
+        <a href="#problem" class="btn btn-outline">See How It Works</a>
+      </div>
+      <p class="hero-note" style="margin-top:1.8rem;">Early access · No spam · Launch offer for founding members</p>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         BELIEF BAR           ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<div id="belief">
+  <div class="ticker">
+    <span class="ticker-item">Track your <strong>whole self.</strong></span>
+    <span class="ticker-item">Not just your <strong>hustle.</strong></span>
+    <span class="ticker-item">Reflect with <strong>intelligence.</strong></span>
+    <span class="ticker-item">Measure what <strong>moves you.</strong></span>
+    <span class="ticker-item">Life is the <strong>ledger.</strong></span>
+    <span class="ticker-item">Growth is <strong>holistic.</strong></span>
+    <span class="ticker-item">Track your <strong>whole self.</strong></span>
+    <span class="ticker-item">Not just your <strong>hustle.</strong></span>
+    <span class="ticker-item">Reflect with <strong>intelligence.</strong></span>
+    <span class="ticker-item">Measure what <strong>moves you.</strong></span>
+    <span class="ticker-item">Life is the <strong>ledger.</strong></span>
+    <span class="ticker-item">Growth is <strong>holistic.</strong></span>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           PROBLEM            ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="problem">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="fade-up">
+        <div class="section-head">
+          <span class="tag">The Problem</span>
+          <h2>You're measuring<br/><em>the wrong things.</em></h2>
+          <p>The tools we use to track our lives were built for spreadsheets and sprints — not souls.</p>
+        </div>
+        <ul class="problem-list">
+          <li>
+            <div class="p-icon">📊</div>
+            <div>
+              <strong>Productivity apps miss the point</strong>
+              <p>They optimize your output — not your aliveness. You can finish every task and still feel empty.</p>
+            </div>
+          </li>
+          <li>
+            <div class="p-icon">💸</div>
+            <div>
+              <strong>Finance trackers count your money, not your time</strong>
+              <p>You know your net worth. But do you know if you're spending your days on what matters?</p>
+            </div>
+          </li>
+          <li>
+            <div class="p-icon">🧠</div>
+            <div>
+              <strong>Self-help stays surface-level</strong>
+              <p>Motivational content gives you energy for 48 hours. It rarely gives you insight that lasts a lifetime.</p>
+            </div>
+          </li>
+          <li>
+            <div class="p-icon">🔀</div>
+            <div>
+              <strong>There's no single source of truth for your life</strong>
+              <p>Your health is in one app. Your journal in another. Your goals in a third. None of them talk to each other.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="problem-right fade-up" style="transition-delay:.15s;">
+        <p class="problem-quote">
+          "I was hitting every professional milestone. Promotion, salary, the whole list. But I had no idea how I was doing as a human being."
+        </p>
+        <p class="problem-quote-attr">— The feeling every ambitious person knows but rarely admits</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           SOLUTION           ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="solution">
+  <div class="wrap">
+    <div class="solution-columns">
+      <div class="solution-visual fade-up">
+        <div class="ledger-label">// soul_ledger — weekly snapshot</div>
+        <div class="ledger-rows">
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-green"></div>Body &amp; Energy</div>
+            <div class="val">↑ 12% from last week</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-blue"></div>Emotional State</div>
+            <div class="val">Steady · 4.2 / 5.0</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-amber"></div>Relationships</div>
+            <div class="val">3 meaningful interactions</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-rose"></div>Work &amp; Purpose</div>
+            <div class="val">Deep work: 18 hrs</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-violet"></div>Financial Health</div>
+            <div class="val">On track · ₹ goal</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-teal"></div>Contribution</div>
+            <div class="val">2 acts logged</div>
+          </div>
+          <div class="ledger-row">
+            <div style="display:flex;align-items:center;gap:.7rem;"><div class="dot dot-fog"></div>Growth &amp; Learning</div>
+            <div class="val">1 book · 4 reflections</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="solution-text fade-up" style="transition-delay:.2s;">
+        <div class="solution-badge">
+          <span>✦</span><span>The Solution</span>
+        </div>
+        <div class="section-head" style="margin-bottom:0;">
+          <h2>An <em>operating system</em><br/>for your entire life.</h2>
+        </div>
+        <p style="margin-top:1.5rem;">SoulLedger is not another journaling app. It's a structured, insight-driven system that tracks every meaningful dimension of who you are — and reflects it back to you with clarity.</p>
+        <p>Think of it as your life's balance sheet. Not just what you earned or shipped, but how you felt, who you loved, what you built, what you gave, and how you grew.</p>
+        <p>Every week, every month, every year — you get a report on <em>yourself</em>. Not your tasks. You.</p>
+        <div style="margin-top:2.5rem;">
+          <a href="#waitlist" class="btn btn-primary">I Want Early Access</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           FEATURES           ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="features">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="tag" style="color:var(--gold-lt);border-color:var(--gold-lt);">What's Inside</span>
+      <h2>Everything you are.<br/><em>Finally organized.</em></h2>
+      <p>SoulLedger is built around the belief that a well-examined life is a well-lived one. Here's what that looks like in practice.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up" data-num="01">
+        <div class="feature-icon">📋</div>
+        <h3>Personal Life Reports</h3>
+        <p>Weekly, monthly, and annual summaries of your entire self — not just what you did, but how you were. Designed to surface patterns you'd never notice otherwise.</p>
+        <span class="feature-tag">Self-awareness at scale</span>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.1s;" data-num="02">
+        <div class="feature-icon">🌐</div>
+        <h3>Holistic Dimension Tracking</h3>
+        <p>Seven dimensions — body, emotions, relationships, time, work, finances, and contribution — tracked together so you see how each one affects the others.</p>
+        <span class="feature-tag">The full picture</span>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.2s;" data-num="03">
+        <div class="feature-icon">💡</div>
+        <h3>Insight-Driven Growth</h3>
+        <p>SoulLedger doesn't just record — it reflects. AI-powered insights surface connections between your energy, habits, choices, and outcomes over time.</p>
+        <span class="feature-tag">Intelligence built in</span>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.05s;" data-num="04">
+        <div class="feature-icon">✍️</div>
+        <h3>Guided Reflection System</h3>
+        <p>Daily micro-entries and weekly deep dives — designed to take under 5 minutes but produce months of meaningful data about who you're becoming.</p>
+        <span class="feature-tag">Built for busy lives</span>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.15s;" data-num="05">
+        <div class="feature-icon">📈</div>
+        <h3>Life Analytics Dashboard</h3>
+        <p>Beautiful, intuitive visualizations of your life's data. See trends, streaks, dips, and breakthroughs. Your story, told in charts that actually mean something.</p>
+        <span class="feature-tag">Data meets meaning</span>
+      </div>
+      <div class="feature-card fade-up" style="transition-delay:.25s;" data-num="06">
+        <div class="feature-icon">🔒</div>
+        <h3>Private by Design</h3>
+        <p>Your most honest thoughts deserve absolute privacy. SoulLedger is built with privacy-first architecture. Your data belongs to you — always.</p>
+        <span class="feature-tag">Your truth, your vault</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         DIMENSIONS           ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="dimensions">
+  <div class="wrap">
+    <div class="dim-intro fade-up">
+      <span class="tag">The 7 Dimensions</span>
+      <h2>Track everything<br/>that makes you <em>human.</em></h2>
+      <p>SoulLedger organizes your life into seven interconnected dimensions — because you are not a single metric.</p>
+    </div>
+    <div class="dim-grid">
+      <div class="dim-card fade-up">
+        <div class="dim-emoji">💪</div>
+        <h4>Body &amp; Energy</h4>
+        <p>Sleep, nutrition, movement, and physical vitality. How you feel in your body shapes everything else.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.07s;">
+        <div class="dim-emoji">🫀</div>
+        <h4>Emotions &amp; Mind</h4>
+        <p>Mood, stress, mental clarity, joy, fear. The emotional weather that determines your inner climate.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.14s;">
+        <div class="dim-emoji">🤝</div>
+        <h4>Relationships</h4>
+        <p>Depth and quality of your connections — family, friends, colleagues, community. Love is a metric too.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.21s;">
+        <div class="dim-emoji">⏳</div>
+        <h4>Time &amp; Attention</h4>
+        <p>Where your hours actually go. Alignment between how you spend time and what you claim to value.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.07s;">
+        <div class="dim-emoji">🎯</div>
+        <h4>Work &amp; Purpose</h4>
+        <p>Career progress, creative output, and sense of meaning in your professional life.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.14s;">
+        <div class="dim-emoji">💰</div>
+        <h4>Finances</h4>
+        <p>Not just your balance — your relationship with money. Spending, saving, giving, and the values behind it all.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.21s;">
+        <div class="dim-emoji">🌱</div>
+        <h4>Contribution &amp; Growth</h4>
+        <p>What you give back. Learning, service, and the legacy you're quietly building every single day.</p>
+      </div>
+      <div class="dim-card fade-up" style="transition-delay:.28s;border-style:dashed;background:transparent;">
+        <div class="dim-emoji">✨</div>
+        <h4>Your Dimension</h4>
+        <p>Add custom tracking categories that matter to you personally. Your life, your ledger, your rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║         SOCIAL PROOF         ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="proof">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="tag">Early Voices</span>
+      <h2>People who've been<br/><em>waiting for this.</em></h2>
+    </div>
+    <p class="proof-note fade-up">
+      <span class="rule"></span>
+      Illustrative responses from our pre-launch interviews
+    </p>
+    <div class="testimonials">
+      <div class="tcard fade-up">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"I've tried every self-improvement system out there. What SoulLedger describes is exactly what's been missing — a place that doesn't ask me to optimize, but to understand myself."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">A</div>
+          <div>
+            <div class="tcard-name">Aditya M.</div>
+            <div class="tcard-role">Product Manager, Bengaluru</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard fade-up" style="transition-delay:.1s;">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"I'm a runner, a professional, and a mother. Every app treats me like just one of those things. The idea that one system tracks ALL of it — that's everything."</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">S</div>
+          <div>
+            <div class="tcard-name">Sneha R.</div>
+            <div class="tcard-role">UX Designer &amp; Ultra-Marathoner</div>
+          </div>
+        </div>
+      </div>
+      <div class="tcard fade-up" style="transition-delay:.2s;">
+        <div class="tcard-stars">★★★★★</div>
+        <p class="tcard-text">"The weekly report concept alone convinced me to join the waitlist. I do quarterly reviews at work — why have I never done one for my actual life?"</p>
+        <div class="tcard-author">
+          <div class="tcard-avatar">K</div>
+          <div>
+            <div class="tcard-name">Karan T.</div>
+            <div class="tcard-role">Founder &amp; Stoic-in-training, Mumbai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║            ABOUT             ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <div class="about-img-placeholder"></div>
+        <div class="about-frame"></div>
+      </div>
+      <div class="about-text fade-up" style="transition-delay:.15s;">
+        <div class="section-head">
+          <span class="tag">The Builder</span>
+          <h2>Built by someone who<br/><em>needed this.</em></h2>
+        </div>
+        <p>I'm Ryan Pereira — a tech-driven builder from Mumbai working at the intersection of design, systems, and real-world impact. I've shipped products in healthcare and technology, places where precision and clarity aren't optional.</p>
+        <p>But even with all that experience building things for people, I struggled to build a coherent picture of my own life. I was tracking my runs. I was journaling sometimes. I was checking my bank balance. None of it talked to each other. None of it added up to a story.</p>
+        <p>SoulLedger started as a personal system — a way to hold myself accountable not just to my goals, but to my values. To understand whether I was actually living the life I claimed to want.</p>
+        <p>I've been to the Jubilee of Youth in Rome. I ride. I run. I garden. I watch every F1 race and think about the engineering. Growth, for me, is never just professional. SoulLedger is built from that belief.</p>
+        <div class="about-chips">
+          <span class="chip">🏍 Bike Rides</span>
+          <span class="chip">🏃 Long-Distance Running</span>
+          <span class="chip">🌿 Gardening</span>
+          <span class="chip">🏎 Formula 1</span>
+          <span class="chip">✈ Rome · Jubilee 2025</span>
+          <span class="chip">💻 Systems Builder</span>
+        </div>
+        <div style="margin-top:2.5rem;">
+          <a href="https://ryanpereira.me" class="btn btn-outline" target="_blank">Visit RyanPereira.me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           PRICING            ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="tag" style="color:var(--gold-lt);border-color:var(--gold-lt);">Pricing</span>
+      <h2>Start free.<br/><em>Grow from there.</em></h2>
+      <p>SoulLedger launches free for all founding members. Future premium features will always be optional — the core will remain open.</p>
+    </div>
+    <div class="pricing-cards fade-up">
+      <div class="pcard">
+        <div class="pcard-name">Free Forever</div>
+        <div class="pcard-price">₹0</div>
+        <div class="pcard-cycle">Always free · No credit card needed</div>
+        <ul class="pcard-features">
+          <li>All 7 life dimensions</li>
+          <li>Daily &amp; weekly reflections</li>
+          <li>Monthly personal reports</li>
+          <li>Life analytics dashboard</li>
+          <li>Private &amp; encrypted</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-outline" style="width:100%;text-align:center;">Join Waitlist Free</a>
+      </div>
+      <div class="pcard featured">
+        <div class="pcard-name">Founding Member</div>
+        <div class="pcard-price">Early</div>
+        <div class="pcard-cycle">First 500 on the waitlist · Exclusive benefits</div>
+        <ul class="pcard-features">
+          <li>Everything in Free</li>
+          <li>Founding member badge</li>
+          <li>Shape product roadmap</li>
+          <li>Priority access to premium</li>
+          <li>Direct line to Ryan</li>
+        </ul>
+        <a href="#waitlist" class="btn btn-gold" style="width:100%;text-align:center;">Secure My Spot Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║             FAQ              ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="tag">FAQ</span>
+      <h2>Questions worth<br/><em>asking.</em></h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item fade-up">
+        <h4>How is SoulLedger different from journaling apps like Day One?</h4>
+        <p>Journaling apps store your words. SoulLedger structures your life. We combine reflection with analytics — so you don't just record your days, you understand them across weeks, months, and years.</p>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.08s;">
+        <h4>How long does it take to use daily?</h4>
+        <p>The daily entry is designed to take under 5 minutes. The weekly review, around 20. The depth comes from consistency over time, not from hours spent in the app each day.</p>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.04s;">
+        <h4>Is my data private? Who can see it?</h4>
+        <p>No one but you. SoulLedger is built with a privacy-first architecture. Your reflections are yours. We don't sell, share, or analyze your personal content. Ever.</p>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.12s;">
+        <h4>How is this different from Tony Robbins or mindset content?</h4>
+        <p>Motivational content gives you energy. SoulLedger gives you data. We're not in the business of inspiration — we're in the business of self-knowledge. What you measure, you can improve.</p>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.08s;">
+        <h4>When does SoulLedger launch?</h4>
+        <p>We're in active development right now. Waitlist members will be the first to access the beta and will help shape the final product. No launch date locked in yet — quality over speed.</p>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.16s;">
+        <h4>What if I miss days or weeks of tracking?</h4>
+        <p>Life happens. SoulLedger is designed for real humans, not perfect robots. You can back-fill entries, and the system works even with gaps — consistency over perfection is the philosophy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           WAITLIST           ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="waitlist">
+  <div class="wrap">
+    <div class="waitlist-inner">
+      <span class="tag" style="color:var(--gold-lt);border-color:rgba(184,148,63,.4);">Early Access · Limited Spots</span>
+      <h2>Your whole life<br/><em>deserves a record.</em></h2>
+      <p>Join the waitlist and be among the first to experience SoulLedger — free, forever. Founding members get exclusive input into what gets built next.</p>
+
+      <div class="waitlist-form">
+        <input type="email" id="emailInput" placeholder="your@email.com" />
+        <button onclick="handleSignup()">Secure My Spot</button>
+      </div>
+      <p class="success-msg" id="successMsg">✓ You're on the list. Welcome, founding member.</p>
+      <p class="waitlist-privacy">No spam, ever. Unsubscribe anytime.</p>
+
+      <div class="counter-wrap">
+        <div class="counter-badge"><strong>247</strong> people already on the waitlist</div>
+        <span style="color:rgba(255,255,255,.15);">·</span>
+        <div class="counter-badge">Only <strong>253</strong> founding member spots left</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║           CONTACT            ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-text fade-up">
+        <h3>Have a question? Let's talk.</h3>
+        <p>Ryan reads every message. Reach out anytime — about SoulLedger, or just to say hi.</p>
+      </div>
+      <div class="contact-links fade-up" style="transition-delay:.1s;">
+        <a href="mailto:mr.pereiraryan.rp@gmail.com" class="contact-link">✉ mr.pereiraryan.rp@gmail.com</a>
+        <a href="https://ryanpereira.me" class="contact-link" target="_blank">🌐 ryanpereira.me</a>
+        <a href="https://x.com/pereiraryan20" class="contact-link" target="_blank">𝕏 pereiraryan20</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ╔══════════════════════════════╗ -->
+<!-- ║            FOOTER            ║ -->
+<!-- ╚══════════════════════════════╝ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-logo">Soul<span>Ledger</span> <span style="font-size:.75rem;opacity:.4;">by ryanpereira.me</span></div>
+      <div class="footer-links">
+        <a href="#problem">Why</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="#waitlist">Waitlist</a>
+      </div>
+      <div class="footer-copy">© 2025 SoulLedger · Built with purpose in Mumbai</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Waitlist form
+  function handleSignup() {
+    const email = document.getElementById('emailInput').value.trim();
+    const msg = document.getElementById('successMsg');
+    if (!email || !email.includes('@')) {
+      document.getElementById('emailInput').style.borderColor = 'var(--rust)';
+      return;
+    }
+    document.getElementById('emailInput').style.borderColor = '';
+    document.getElementById('emailInput').value = '';
+    msg.classList.add('show');
+    setTimeout(() => msg.classList.remove('show'), 6000);
+  }
+
+  document.getElementById('emailInput').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSignup();
+  });
+</script>
+
+</body>
+</html>

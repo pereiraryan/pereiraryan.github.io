@@ -3,9 +3,8 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Ryan Wilson Pereira</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-  <style>
+  <title>Ryan Pereira</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />  <style>
   /********************************************
 * 	reset from
 * 	http://meyerweb.com/eric/tools/css/reset/
@@ -190,10 +189,6 @@ em {
   color: #757575;
 }
 
-blockquote {
-  margin-bottom: 1em;
-}
-
 strong {
   font-weight: 700;
 }
@@ -220,8 +215,21 @@ section .location {
   margin-top: 0.5rem;
 }
 
+
+
 #profiles .item {
   padding: 0;
+}
+
+#profiles .username {display: inline ;}
+#profiles .url-full {display: none ;}
+
+.project-item,
+.certificate-item,
+.education-item {
+  display: inline-block;
+  vertical-align: text-top;
+  width: 33%;
 }
 
 #header > #profiles,
@@ -333,7 +341,6 @@ section .location {
 .position,
 .company,
 .organization,
-.institution,
 .date,
 .area,
 .studyType,
@@ -347,12 +354,12 @@ section .location {
 .area,
 .title,
 .language,
-.name {
+.name,
+.author {
   font-weight: 600;
 }
 
 .company::before,
-.institution::before,
 .organization::before,
 .awarder::before {
   content: "at ";
@@ -511,11 +518,11 @@ section .location {
 }
 
 #skills .item {
-  width: 16em;
+  width: 20.5em;
 }
 
 #skills .item .keywords {
-  width: 15em;
+  width: 20.5em;
 }
 
 /* Skill chart */
@@ -571,6 +578,9 @@ section .location {
   padding-left: 0.5em;
   border-left: 5px solid #ff6d1f;
 }
+.author {
+  margin-bottom: 1em;
+}
 
 .section > section > section {
   margin-bottom: 1rem;
@@ -600,11 +610,6 @@ section .location {
     width: 80%;
     margin: 0 auto;
   }
-  .section header .date {
-    float: right;
-    font-weight: 600;
-    color: #000;
-  }
 }
 
 /****************
@@ -623,11 +628,7 @@ section .location {
     opacity: 1;
     cursor: pointer;
   }
-  .section > section:not(.main-summary) {
-    margin-left: 1.67rem;
-  }
   .company::before,
-  .institution::before,
   .organization::before,
   .awarder::before {
     content: "| ";
@@ -649,9 +650,6 @@ section .location {
 }
 
 @media print {
-  #profiles a:not(.hide-href-print)::after{
-    content: " (" attr(href) ") ";
-  }
   #resume {
     margin: 0.1em;
     padding: 0.1em;
@@ -666,7 +664,6 @@ section .location {
     display: none;
   }
   .company::before,
-  .institution::before,
   .organization::before,
   .awarder::before {
     content: "at ";
@@ -725,11 +722,11 @@ section .location {
     width: calc(100% / 3);
     padding: 0;
   }
+  #skills .item .keywords{
+    width: 98%;
+  }
   .highlights {
     margin: 0.5em 0 0 0;
-  }
-  ul.keywords::before {
-    content: "Skills acquired: ";
   }
   #skills .keywords::before {
     content: none;
@@ -759,8 +756,14 @@ section .location {
     display: block;
     opacity: 1 !important;
   }
-  .fa-map-marker-alt:before {
+  .fa-location-dot:before {
     padding-left: 0.1em;
+  }
+  #profiles .url-full {display: inline ;}
+  #profiles .username,
+  #references,
+  .image {
+    display: none
   }
 }
 
@@ -771,10 +774,10 @@ section .location {
   
   <div id="resume">
     	<header id="header" class="clear">
-    		<img class="image" src="https://avatars.githubusercontent.com/u/12751557?v&#x3D;4" alt="Ryan Wilson Pereira" />
+    		<img class="image" src="https://avatars.githubusercontent.com/u/12751557?v&#x3D;4" alt="Ryan Pereira" />
     		<div class="middle">
-    			<h1 class="name">Ryan Wilson Pereira</h1>
-    			<h2 class="label">Software Engineer</h2>
+    			<h1 class="name">Ryan Pereira</h1>
+    			<h2 class="label">Senior Frontend Engineer</h2>
     		</div>
     
     		<span class="location">
@@ -788,69 +791,101 @@ section .location {
     
     		<div id="contact">
     			<div class="email">
-    				<span class="far fa-envelope"></span>
+    				<span class="fa-regular fa-envelope"></span>
     				<a class="hide-href-print" href="mailto:mr.pereiraryan.rp@gmail.com">mr.pereiraryan.rp@gmail.com</a>
     			</div>
     			<div class="phone">
-    				<span class="fas fa-mobile-alt"></span>
+    				<span class="fa-solid fa-mobile-screen-button"></span>
     				<a class="hide-href-print" href="tel:(+91) 9769125625">(+91) 9769125625</a>
     			</div>
     		</div>
     
     		<div id="profiles">
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-github github social"></span>
-    					<span class="url">
+    				<div>
+    					<span class="fa-brands fa-github github social"></span>
+    					<span class="username">
     						<a target="_blank" href="https://github.com/pereiraryan/">pereiraryan</a>
     					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://github.com/pereiraryan/">https://github.com/pereiraryan/</a>
+    					</span>
     				</div>
     			</div>
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-linkedin linkedin social"></span>
-    					<span class="url">
+    				<div>
+    					<span class="fa-brands fa-linkedin linkedin social"></span>
+    					<span class="username">
     						<a target="_blank" href="https://www.linkedin.com/in/pereira-ryan/">pereira-ryan</a>
     					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://www.linkedin.com/in/pereira-ryan/">https://www.linkedin.com/in/pereira-ryan/</a>
+    					</span>
     				</div>
     			</div>
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-twitter twitter social"></span>
-    					<span class="url">
+    				<div>
+    					<span class="fa-brands fa-twitter twitter social"></span>
+    					<span class="username">
     						<a target="_blank" href="https://twitter.com/pereiraryan20">pereiraryan20</a>
     					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://twitter.com/pereiraryan20">https://twitter.com/pereiraryan20</a>
+    					</span>
     				</div>
     			</div>
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-stack-overflow stack-overflow social"></span>
-    					<span class="url">
+    				<div>
+    					<span class="fa-brands fa-stack-overflow stack-overflow social"></span>
+    					<span class="username">
     						<a target="_blank" href="https://stackoverflow.com/users/6582516/ryan-pereira/">ryan-pereira</a>
     					</span>
-    				</div>
-    			</div>
-    			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-soundcloud soundcloud social"></span>
-    					<span class="url">
-    						<a target="_blank" href="https://ryanpereira2025.netlify.app/">pereiraryan</a>
+    					<span class="url-full">
+    						<a target="_blank" href="https://stackoverflow.com/users/6582516/ryan-pereira/">https://stackoverflow.com/users/6582516/ryan-pereira/</a>
     					</span>
     				</div>
     			</div>
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-wordpress wordpress social"></span>
-    					<span class="url">
+    				<div>
+    					<span class="fa-brands fa-wordpress wordpress social"></span>
+    					<span class="username">
     						<a target="_blank" href="https://profiles.wordpress.org/pereiraryan/">pereiraryan</a>
     					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://profiles.wordpress.org/pereiraryan/">https://profiles.wordpress.org/pereiraryan/</a>
+    					</span>
     				</div>
     			</div>
     			<div class="item">
-    				<div class="username">
-    					<span class="fab fa-react react social"></span>
-    					<span class="url">
-    						<a target="_blank" href="https://ryanpereira.netlify.app/">pereiraryan</a>
+    				<div>
+    					<span class="fa-brands fa-blogger blogger social"></span>
+    					<span class="username">
+    						<a target="_blank" href="https://pereiraryan.wordpress.com/">pereiraryan</a>
+    					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://pereiraryan.wordpress.com/">https://pereiraryan.wordpress.com/</a>
+    					</span>
+    				</div>
+    			</div>
+    			<div class="item">
+    				<div>
+    					<span class="fa-brands fa-react react social"></span>
+    					<span class="username">
+    						<a target="_blank" href="https://ryanpereira.netlify.app/">ryanpereira</a>
+    					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://ryanpereira.netlify.app/">https://ryanpereira.netlify.app/</a>
+    					</span>
+    				</div>
+    			</div>
+    			<div class="item">
+    				<div>
+    					<span class="fa-brands fa-foursquare foursquare social"></span>
+    					<span class="username">
+    						<a target="_blank" href="https://ryanpereira2025.netlify.app/">ryanpereira2025</a>
+    					</span>
+    					<span class="url-full">
+    						<a target="_blank" href="https://ryanpereira2025.netlify.app/">https://ryanpereira2025.netlify.app/</a>
     					</span>
     				</div>
     			</div>
@@ -859,7 +894,7 @@ section .location {
     
     	<section class="section">
     		<section class="main-summary">
-    			<div><p><p>I am a seasoned technology professional with over 8 years of experience in software engineering and web development. I hold a bachelor’s degree in Computer Engineering from the University of Mumbai, India. My career objective is to continuously develop practical skills and gain hands-on experience in designing and building innovative products that effectively solve real-world problems. I specialize in creating user-centric interfaces for websites and web applications, with a focus on seamless user experience and robust functionality. Beyond my professional pursuits, I have a passion for running, traveling, and gardening.</p></p></div>
+    			<div><p><p>Senior Frontend Engineer with 10+ years of experience building high-performance, resilient web applications at scale. Expertise in React, TypeScript, and modern frontend architectures, with a strong focus on performance optimization, reliability, and user-centric design. Proven track record of owning frontend systems end-to-end, collaborating across cross-functional teams, and delivering production-grade solutions in complex, distributed environments. Actively leverage AI-assisted development tools to improve engineering velocity and code quality.</p></p></div>
     		</section>
     	</section>
     
@@ -870,7 +905,7 @@ section .location {
     	<section id="skills">
     		<div class="item">
     			<h3 class="name">
-    				Front-end Development
+    				Frontend Engineering
     			</h3>
     			 
     			<div class="level master">
@@ -878,17 +913,18 @@ section .location {
     				<div class="bar"></div>
     			</div>
     			<ul class="keywords">
-    				<li>Next.js</li>
     				<li>React</li>
-    				<li>Typescript</li>
-    				<li>Tailwind</li>
     				<li>Astro</li>
-    				<li>GraphQl</li>
+    				<li>TypeScript</li>
+    				<li>JavaScript (ES6+)</li>
+    				<li>HTML5</li>
+    				<li>CSS3</li>
+    				<li>Tailwind</li>
     			</ul>
     		</div>
     		<div class="item">
     			<h3 class="name">
-    				Front-end Tooling
+    				Architecture &amp; Performance
     			</h3>
     			 
     			<div class="level advanced">
@@ -896,264 +932,281 @@ section .location {
     				<div class="bar"></div>
     			</div>
     			<ul class="keywords">
-    				<li>Webpack</li>
-    				<li>Gulp</li>
-    				<li>Prettier</li>
-    				<li>ESlint</li>
-    				<li>React Testing Library</li>
+    				<li>Web Performance</li>
+    				<li>Scalable UI Architecture</li>
+    				<li>State Management</li>
+    				<li>SSR</li>
+    				<li>Accessibility</li>
     			</ul>
     		</div>
     		<div class="item">
     			<h3 class="name">
-    				Version Control
+    				Testing &amp; Quality
     			</h3>
     			 
-    			<div class="level master">
-    				<em>Master</em>
+    			<div class="level advanced">
+    				<em>Advanced</em>
+    				<div class="bar"></div>
+    			</div>
+    			<ul class="keywords">
+    				<li>Jest</li>
+    				<li>React Testing Library</li>
+    				<li>Unit Testing</li>
+    				<li>Automation</li>
+    			</ul>
+    		</div>
+    		<div class="item">
+    			<h3 class="name">
+    				Tools &amp; Platforms
+    			</h3>
+    			 
+    			<div class="level advanced">
+    				<em>Advanced</em>
     				<div class="bar"></div>
     			</div>
     			<ul class="keywords">
     				<li>Git</li>
-    				<li>Svn</li>
-    				<li>Perforce</li>
+    				<li>CI/CD</li>
+    				<li>Webpack</li>
+    				<li>Firebase</li>
+    				<li>Cloud Services</li>
+    				<li>Azure</li>
+    				<li>Grafana</li>
     			</ul>
     		</div>
     		<div class="item">
     			<h3 class="name">
-    				Back-end Development
+    				Practices
     			</h3>
     			 
-    			<div class="level intermediate">
-    				<em>Intermediate</em>
+    			<div class="level advanced">
+    				<em>Advanced</em>
     				<div class="bar"></div>
     			</div>
     			<ul class="keywords">
-    				<li>Node.js</li>
-    				<li>Php</li>
-    				<li>Laravel</li>
-    				<li>Wordpress</li>
-    				<li>Docker</li>
-    			</ul>
-    		</div>
-    		<div class="item">
-    			<h3 class="name">
-    				Project Management
-    			</h3>
-    			 
-    			<div class="level intermediate">
-    				<em>Intermediate</em>
-    				<div class="bar"></div>
-    			</div>
-    			<ul class="keywords">
-    				<li>Sprint Planing</li>
-    				<li>Requirements Documenting</li>
-    				<li>Time Management</li>
-    			</ul>
-    		</div>
-    		<div class="item">
-    			<h3 class="name">
-    				Others
-    			</h3>
-    			 
-    			<div class="level intermediate">
-    				<em>Intermediate</em>
-    				<div class="bar"></div>
-    			</div>
-    			<ul class="keywords">
-    				<li>Data Visualization</li>
-    				<li>Complex Architrure</li>
-    				<li>Data Analytics</li>
-    				<li>Headless Cms</li>
+    				<li>SAFe Agile</li>
+    				<li>Code Reviews</li>
+    				<li>System Design</li>
+    				<li>Cross-functional Collaboration</li>
     			</ul>
     		</div>
     	</section>
     </section>
     <section class="section">
       <header>
-        <h2 class='section-title'>Work Experience <span class="item-count">(5)</span></h2>
+        <h2 class='section-title'>Work Experience <span class="item-count">(6)</span></h2>
       </header>
     
       <section id="work">
         <section class="work-item">
+            <label for="work-item-0"></label>
     
-          <label for="work-item-0"></label>
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Feb 2025</span>
+                <span class="endDate">- Current</span>
+              </div>
+              <div class="position">Associate Technical Lead</div>
+                <div class="company">Embitel Technologies (Volkswagen Group Company)</div>
+            </header>
     
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">Feb 2025</span>
-              <span class="endDate">- Current</span>
-            </div>
-            <div class="position">Associate Technical Lead</div>
-            <div class="company">Embitel Technologies A Volkswagen group company</div>
-          </header>
-    
-          <span class="fas fa-map-marker-alt"></span>
-          <span class="location">Remote</span>
-          <span class="url">
-            <span class="fas fa-external-link-alt"></span>
-            <a target="_blank" href="https://www.embitel.com">https://www.embitel.com</a>
-          </span>  
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
+     
           <ul class="keywords">
-            <li>Typescript</li>
-            <li>React.js</li>
+            <li>TypeScript</li>
             <li>Astro</li>
+            <li>TanStack Query</li>
+            <li>State Management</li>
+            <li>Design Systems</li>
+            <li>Performance Optimization</li>
+            <li>Agile</li>
           </ul>
           <div class="item" id="work-item">
-            <div class="summary"><p><p>Manage the marketing website, help in architrure decisions for building dashboards for clients.</p></p></div>
+            <div class="summary"><p><p>Led development of scalable frontend systems using TypeScript and Astro, focusing on performance, reliability, and maintainability in a distributed environment.</p></p></div>
             <ul class="highlights">
-              <li><p><p>Developing Custom Visualisations</p></p></li>
-              <li><p><p>Collaborating on Front-End Architecture.</p></p></li>
-              <li><p><p>Integrating with Backend Systems and optimising User Experience.</p></p></li>
+              <li><p><p>Owned end-to-end redesign of a high-throughput job submission interface, improving performance and UX with instant job ID generation for long-running workflows.</p></p></li>
+              <li><p><p>Architected resilient UI systems with structured error handling (error boundaries, async failure strategies), significantly reducing runtime failures and improving system stability.</p></p></li>
+              <li><p><p>Designed scalable frontend patterns for complex workflows, including queue handling, job lifecycle management, and validation systems for improved transparency and user decision-making.</p></p></li>
+              <li><p><p>Applied AI-assisted development and agent-driven workflows to accelerate feature delivery, reduce manual effort, and improve overall engineering productivity.</p></p></li>
             </ul>
           </div>
         </section>
         <section class="work-item">
+            <label for="work-item-1"></label>
     
-          <label for="work-item-1"></label>
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Dec 2024</span>
+                <span class="endDate">- Feb 2025</span>
+              </div>
+              <div class="position">Frontend Developer</div>
+                <div class="company">MyPulse.io</div>
+            </header>
     
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">Apr 2024</span>
-              <span class="endDate">- Oct 2024</span>
-            </div>
-            <div class="position">Frontend Developer</div>
-            <div class="company">Fluent Health</div>
-          </header>
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
+     
+          <ul class="keywords">
+            <li>TypeScript</li>
+            <li>Next.js</li>
+            <li>React</li>
+            <li>Tailwind CSS</li>
+            <li>SQL</li>
+            <li>API Integration</li>
+          </ul>
+          <div class="item" id="work-item">
+            <div class="summary"><p><p>Built data-intensive frontend interfaces with focus on performance, scalability, and seamless API integration.</p></p></div>
+            <ul class="highlights">
+              <li><p><p>Developed interactive data visualizations for financial insights, improving clarity and usability of complex datasets.</p></p></li>
+              <li><p><p>Integrated frontend systems with backend APIs and databases, ensuring efficient data flow and responsiveness.</p></p></li>
+              <li><p><p>Optimized frontend performance and contributed to architectural improvements for scalability.</p></p></li>
+            </ul>
+          </div>
+        </section>
+        <section class="work-item">
+            <label for="work-item-2"></label>
     
-          <span class="fas fa-map-marker-alt"></span>
-          <span class="location">Mumbai, India</span>
-          <span class="url">
-            <span class="fas fa-external-link-alt"></span>
-            <a target="_blank" href="https://fluentinhealth.com/">https://fluentinhealth.com/</a>
-          </span>  
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Apr 2024</span>
+                <span class="endDate">- Oct 2024</span>
+              </div>
+              <div class="position">Frontend Developer</div>
+                <div class="company">Fluent Health</div>
+            </header>
+    
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
+     
           <ul class="keywords">
             <li>Next.js</li>
-            <li>Typescript</li>
-            <li>GraphQl</li>
-            <li>Google Cloud</li>
+            <li>TypeScript</li>
+            <li>GraphQL</li>
             <li>Firebase</li>
-            <li>Directus</li>
+            <li>Cloud</li>
+            <li>SSR</li>
           </ul>
           <div class="item" id="work-item">
-            <div class="summary"><p><p>Independently managed the entire marketing website, overseeing all aspects from development to deployment, ensuring seamless operation and alignment with business goals.</p></p></div>
+            <div class="summary"><p><p>Owned and scaled a production marketing platform using modern frontend and cloud technologies.</p></p></div>
             <ul class="highlights">
-              <li><p><p>Developed and deployed a responsive web application using Next.js, leveraging Server-Side Rendering (SSR) for enhanced performance and SEO optimization.</p></p></li>
-              <li><p><p>Implemented streaming server responses to handle form submissions, ensuring efficient data handling and reduced load times.</p></p></li>
-              <li><p><p>Utilized Next.js API routes for custom backend logic, enabling secure and scalable handling of form data and server communication.</p></p></li>
-              <li><p><p>Led Code Migration and Optimization: Successfully migrated the codebase from Vercel to Firebase, optimizing performance, reducing costs, and improving Core Web Vitals.</p></p></li>
+              <li><p><p>Built scalable frontend architecture using Next.js with server-side rendering and streaming responses.</p></p></li>
+              <li><p><p>Migrated infrastructure from Vercel to Firebase, improving performance and reducing operational costs.</p></p></li>
+              <li><p><p>Implemented secure API integrations and ensured maintainable, production-grade code quality.</p></p></li>
             </ul>
           </div>
         </section>
         <section class="work-item">
+            <label for="work-item-3"></label>
     
-          <label for="work-item-2"></label>
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Nov 2022</span>
+                <span class="endDate">- Feb 2024</span>
+              </div>
+              <div class="position">Frontend Developer</div>
+                <div class="company">Ubisoft</div>
+            </header>
     
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">Nov 2022</span>
-              <span class="endDate">- Feb 2024</span>
-            </div>
-            <div class="position">Frontend Developer</div>
-            <div class="company">Ubisoft</div>
-          </header>
-    
-          <span class="fas fa-map-marker-alt"></span>
-          <span class="location">Pune, India</span>
-          <span class="url">
-            <span class="fas fa-external-link-alt"></span>
-            <a target="_blank" href="https://ubisoft.com">https://ubisoft.com</a>
-          </span>  
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
+     
           <ul class="keywords">
-            <li>React.js</li>
+            <li>React</li>
+            <li>TypeScript</li>
             <li>Jest</li>
-            <li>Material UI</li>
-            <li>Ubisoft Cloud</li>
-            <li>Miro</li>
             <li>Redux</li>
+            <li>CI/CD</li>
+            <li>Testing</li>
           </ul>
           <div class="item" id="work-item">
-            <div class="summary"><p><p>Developing the frontend tool for a new game and integrating in-house services with the backend.</p></p></div>
+            <div class="summary"><p><p>Developed scalable internal tools and frontend systems using React in a cloud-driven environment.</p></p></div>
             <ul class="highlights">
-              <li><p><p>Writing and maintaining high-quality, scalable and maintainable code.</p></p></li>
-              <li><p><p>Delivered an Account Information tool in react from design to development with quality guidelines and in allocated time.</p></p></li>
-              <li><p><p>Worked on standardizing CSS in the project, coding guidelines documented so new joiners to the project can refer to that and contribute with quality.</p></p></li>
-              <li><p><p>Perform testing and write unit test cases in Jest with every feature releases. Also write automated test cases on Ranorex tool.</p></p></li>
+              <li><p><p>Delivered a production-grade React application end-to-end, from design to deployment.</p></p></li>
+              <li><p><p>Implemented unit and automated testing strategies to improve reliability and reduce regressions.</p></p></li>
+              <li><p><p>Standardized frontend practices, improving team productivity and onboarding efficiency.</p></p></li>
             </ul>
           </div>
         </section>
         <section class="work-item">
+            <label for="work-item-4"></label>
     
-          <label for="work-item-3"></label>
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Apr 2017</span>
+                <span class="endDate">- Nov 2022</span>
+              </div>
+              <div class="position">UI Developer</div>
+                <div class="company">Newfold Digital</div>
+            </header>
     
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">Apr 2017</span>
-              <span class="endDate">- Nov 2022</span>
-            </div>
-            <div class="position">UI developer</div>
-            <div class="company">Newfold Digital</div>
-          </header>
-    
-          <span class="fas fa-map-marker-alt"></span>
-          <span class="location">Mumbai, India</span>
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
           <span class="url">
-            <span class="fas fa-external-link-alt"></span>
+            <span class="fa-solid fa-up-right-from-square"></span>
             <a target="_blank" href="https://newfold.com">https://newfold.com</a>
           </span>  
           <ul class="keywords">
-            <li>React.js</li>
-            <li>Sass</li>
+            <li>React</li>
+            <li>JavaScript</li>
+            <li>SASS</li>
             <li>Bootstrap</li>
-            <li>Atlassian</li>
-            <li>Laravel</li>
-            <li>Wordpress</li>
-            <li>Php</li>
+            <li>Datadog</li>
+            <li>PHP</li>
+            <li>WordPress</li>
+            <li>Performance Optimization</li>
           </ul>
           <div class="item" id="work-item">
-            <div class="summary"><p><p>Creating innovative landing pages for both online &amp; offline marketing campaigns for LogicBoxes, ResellerClub, Bluehost India and Hostgator Business Units.</p></p></div>
+            <div class="summary"><p><p>Developed high-conversion, performance-optimized web experiences and scalable frontend solutions across multiple hosting brands.</p></p></div>
             <ul class="highlights">
-              <li><p><p>Implemented functional changes for customers to have a seemless purchase flow on ExpressCart which is built on React.</p></p></li>
-              <li><p><p>Successfully integrated products on to the white-labeled orderbox platform, to increase upsell and cross-sell of hosting products.</p></p></li>
-              <li><p><p>Integrated real-time monitoring using datadog which helped in understanging End-to-end visibility into user journeys for web and mobile users</p></p></li>
+              <li><p><p>Enhanced React-based e-commerce flows (ExpressCart), improving purchase experience and reducing friction in high-volume user journeys.</p></p></li>
+              <li><p><p>Integrated and scaled white-labeled ordering platforms, enabling cross-sell and upsell of hosting products across multiple business units.</p></p></li>
+              <li><p><p>Implemented real-time monitoring and observability using Datadog, providing end-to-end visibility into user journeys and improving issue detection.</p></p></li>
+              <li><p><p>Delivered high-performance landing pages for marketing campaigns, optimizing load times, responsiveness, and conversion rates at scale.</p></p></li>
             </ul>
           </div>
         </section>
         <section class="work-item">
+            <label for="work-item-5"></label>
     
-          <label for="work-item-4"></label>
+            <header class="clear">
+              <div class="date">
+                <span class="startDate">Jun 2016</span>
+                <span class="endDate">- Apr 2017</span>
+              </div>
+              <div class="position">Trainee Software Engineer</div>
+                <div class="company">Majesco</div>
+            </header>
     
-          <header class="clear">
-            <div class="date">
-              <span class="startDate">Jun 2016</span>
-              <span class="endDate">- Apr 2017</span>
-            </div>
-            <div class="position">Trainee Software Engineer</div>
-            <div class="company">Majesco</div>
-          </header>
-    
-          <span class="fas fa-map-marker-alt"></span>
-          <span class="location">Mumbai,India</span>
+          <span class="location">
+            <span class="fa-solid fa-location-dot"></span>
+          </span>
           <span class="url">
-            <span class="fas fa-external-link-alt"></span>
+            <span class="fa-solid fa-up-right-from-square"></span>
             <a target="_blank" href="https://majesco.com">https://majesco.com</a>
           </span>  
           <ul class="keywords">
-            <li>Angular.js</li>
-            <li>Html5</li>
+            <li>AngularJS</li>
+            <li>JavaScript</li>
             <li>Java</li>
-            <li>Css</li>
+            <li>HTML5</li>
+            <li>CSS</li>
             <li>Jenkins</li>
-            <li>Javascript</li>
+            <li>SOAP</li>
+            <li>Enterprise Systems</li>
           </ul>
           <div class="item" id="work-item">
-            <div class="summary"><p><p>Worked on MajescoBilling Application (ICD ICM tool) a 'Product' offering from Majesco which is built to cater to generic P&amp;C Insurance market in North America.</p></p></div>
+            <div class="summary"><p><p>Contributed to enterprise insurance product development, gaining foundational experience in full-stack systems and enterprise workflows.</p></p></div>
             <ul class="highlights">
-              <li><p><p>Worked as an ICD/ICM developer</p></p></li>
-              <li><p><p>Developed YAWL flows, defining and updating Object Models and Mappings on the Proprietary Toolkit for the insurance business</p></p></li>
-              <li><p><p>Worked with developers to ensure new environments both meet their requirements and configurations to industry-standard best practices.</p></p></li>
-              <li><p><p>Responsible for deployment of web application on JBoss servers</p></p></li>
-              <li><p><p>Developed UI application “Batch Automation Testing” using angular.js for the testing team to run their scenarios.</p></p></li>
-              <li><p><p>Carry out Unit testing on system applications using SOAP and WSDL based services.</p></p></li>
+              <li><p><p>Developed workflow-driven solutions using YAWL, modeling business processes and system integrations for insurance platforms.</p></p></li>
+              <li><p><p>Built internal AngularJS tools to support QA automation workflows, improving testing efficiency and team productivity.</p></p></li>
+              <li><p><p>Deployed and managed applications on JBoss servers, ensuring stable and reliable environments.</p></p></li>
+              <li><p><p>Performed unit and integration testing using SOAP/WSDL services, strengthening system reliability and service validation.</p></p></li>
             </ul>
           </div>
         </section>
@@ -1175,23 +1228,16 @@ section .location {
               - 2016
               </span>
             </div>
-            <div class="header-left">
-              <div class="studyType">
-                Bachelor of Engineering
-              </div>
               <div class="area">
                 Computer Science
               </div>
-              <div class="institution">
-                University of Mumbai
+              <div class="studyType">
+                Bachelor of Engineering
               </div>
-            </div>
+                  <div class="institution">University of Mumbai</div>
           </header>
     
     
-          <ul class="courses">
-            <li>Computer Science</li>
-          </ul>
     
           <div class="item">
           </div>
@@ -1221,7 +1267,7 @@ section .location {
               </header>
     
               <div class="item">
-                  <div class="summary"><p><p>Ryan has displayed exemplary performance and played a key role in making sure all of our Web portals are GDPR &amp; PCI compliant, in accordance to the rules laid down by our internal Privacy teams. His proactive activities and coordination with several teams internally has made sure he delivered perfection in every aspect of this project, thereby making sure other teams look at our activities and follow suit as well as helping the brand be compliant in all means.</p></p></div>
+                  <div class="summary"><p><p>Recognized for delivering high-quality, compliant, and reliable software systems.</p></p></div>
               </div>
             </section>
         </section>

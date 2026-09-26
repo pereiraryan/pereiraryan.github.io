@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="FP1 Finance helps businesses access tailored business loans and asset finance solutions for growth, working capital, equipment, vehicles and expansion. Speak to a specialist finance team."
+    />
+    <meta
+      name="keywords"
+      content="business loans, business finance, commercial finance, asset finance, equipment finance, vehicle finance, SME finance, business funding, working capital finance"
+    />
+    <title>FP1 Finance | Business Loans & Asset Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --navy: #0d1f2d;
+        --navy-soft: #18344b;
+        --text: #16232d;
+        --muted: #536574;
+        --line: #dfe7ee;
+        --panel: #f5f7fa;
+        --white: #ffffff;
+        --accent: #d49a3d;
+        --accent-deep: #b87a1d;
+        --sage: #dfeee8;
+        --sky: #eaf4fb;
+        --success: #2b7a68;
+        --shadow: 0 18px 40px rgba(13, 31, 45, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--white);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        margin: 0 0 1rem;
+        color: var(--muted);
+      }
+
+      h1, h2, h3, h4, h5 {
+        margin-top: 0;
+        line-height: 1.15;
+        color: var(--navy);
+      }
+
+      .container {
+        width: min(1160px, calc(100% - 2rem));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent-deep);
+        background: rgba(212, 154, 61, 0.12);
+        padding: 0.6rem 0.9rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+
+      .section-header {
+        max-width: 720px;
+        margin-bottom: 2.5rem;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin-bottom: 0.75rem;
+      }
+
+      .section-header p {
+        font-size: 1.05rem;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(13, 31, 45, 0.08);
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 78px;
+        gap: 1rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        color: var(--navy);
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+      }
+
+      .menu a {
+        font-size: 0.94rem;
+        color: var(--muted);
+        position: relative;
+        padding: 0.4rem 0;
+      }
+
+      .menu a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 100%;
+        height: 2px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.2s ease;
+      }
+
+      .menu a:hover::after,
+      .menu a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.9rem 1.4rem;
+        border-radius: 999px;
+        background: var(--navy);
+        color: var(--white);
+        border: 1px solid transparent;
+        font-weight: 600;
+        white-space: nowrap;
+      }
+
+      .nav-cta:hover,
+      .nav-cta:focus-visible,
+      .button:hover,
+      .button:focus-visible,
+      .button-ghost:hover,
+      .button-ghost:focus-visible {
+        transform: translateY(-1px);
+      }
+
+      .burger {
+        display: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .burger span,
+      .burger::before,
+      .burger::after {
+        display: block;
+        background: var(--navy);
+        height: 2px;
+        width: 20px;
+        margin: 0 auto;
+        content: "";
+        border-radius: 2px;
+      }
+
+      .burger span {
+        margin: 6px auto;
+      }
+
+      .hero {
+        background:
+          linear-gradient(120deg, rgba(13, 31, 45, 0.9), rgba(24, 52, 75, 0.82)),
+          url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+        color: var(--white);
+        position: relative;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2.5rem;
+        align-items: center;
+        min-height: 720px;
+      }
+
+      .hero-copy {
+        padding: 5rem 0 4rem;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 0.96;
+        letter-spacing: -0.06em;
+        color: var(--white);
+        margin-bottom: 1.2rem;
+        max-width: 640px;
+      }
+
+      .hero-copy p {
+        max-width: 620px;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.12rem;
+        margin-bottom: 2rem;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-bottom: 2rem;
+      }
+
+      .button,
+      .button-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 1rem 1.5rem;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button {
+        background: var(--accent);
+        color: var(--navy);
+        box-shadow: 0 12px 30px rgba(212, 154, 61, 0.28);
+      }
+
+      .button-ghost {
+        background: transparent;
+        color: var(--white);
+        border: 1px solid rgba(255,255,255,0.4);
+      }
+
+      .trust-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.06);
+        color: rgba(255,255,255,0.9);
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+
+      .hero-card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(12px);
+        border-radius: 24px;
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+
+      .mini-panel {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 18px;
+        padding: 1rem 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .mini-panel strong {
+        display: block;
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 0.4rem;
+      }
+
+      .mini-panel span {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--white);
+      }
+
+      .hero-card h3 {
+        color: var(--white);
+        margin-bottom: 0.8rem;
+      }
+
+      .list-check {
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .list-check li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        color: rgba(255,255,255,0.8);
+      }
+
+      .list-check li::before {
+        content: "✓";
+        color: var(--accent);
+        font-weight: 800;
+      }
+
+      .trust-strip {
+        background: #f4f7fa;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1rem;
+        padding: 1.25rem 0;
+      }
+
+      .trust-item {
+        text-align: center;
+        padding: 1rem 0.5rem;
+      }
+
+      .trust-item strong {
+        display: block;
+        color: var(--navy);
+        font-size: 1.15rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .trust-item span {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 2rem 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      .card-tag {
+        display: inline-block;
+        padding: 0.45rem 0.7rem;
+        border-radius: 8px;
+        background: var(--sky);
+        color: var(--navy);
+        font-size: 0.76rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 1rem;
+      }
+
+      .card h3 {
+        font-size: 1.45rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .card p {
+        margin-bottom: 1.2rem;
+      }
+
+      .card ul {
+        display: grid;
+        gap: 0.5rem;
+        margin: 0 0 1.2rem;
+      }
+
+      .card li {
+        color: var(--muted);
+        position: relative;
+        padding-left: 1rem;
+      }
+
+      .card li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-deep);
+      }
+
+      .link-arrow {
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .info-panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 2rem;
+      }
+
+      .check-list {
+        display: grid;
+        gap: 0.9rem;
+        margin-top: 1.5rem;
+      }
+
+      .check-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        color: var(--text);
+      }
+
+      .check-list li::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: var(--sage);
+        border: 5px solid var(--success);
+        flex: none;
+        margin-top: 0.25rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .stat {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1rem 1.25rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.9rem;
+        color: var(--navy);
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .step {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.5rem 1.25rem;
+        position: relative;
+      }
+
+      .step-number {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--navy);
+        color: var(--white);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .step h3 {
+        margin-bottom: 0.6rem;
+      }
+
+      .calculator-wrap {
+        display: grid;
+        grid-template-columns: 0.95fr 1.05fr;
+        gap: 2rem;
+        align-items: start;
+      }
+
+      .calculator {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      .field {
+        margin-bottom: 1rem;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 0.45rem;
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        font: inherit;
+        background: var(--white);
+        color: var(--text);
+      }
+
+      .field input:focus,
+      .field select:focus,
+      .field textarea:focus {
+        outline: 2px solid rgba(24, 52, 75, 0.15);
+        border-color: var(--navy);
+      }
+
+      .calculator-result {
+        background: linear-gradient(180deg, #f5f7fa 0%, #edf3f8 100%);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.5rem;
+      }
+
+      .result-grid {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .result-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        color: var(--muted);
+        padding-bottom: 0.7rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .result-row strong {
+        color: var(--navy);
+      }
+
+      .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .industry {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.3rem;
+      }
+
+      .industry h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .industry p {
+        margin-bottom: 0.9rem;
+      }
+
+      .scenario-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.2rem;
+      }
+
+      .scenario {
+        background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.5rem;
+      }
+
+      .scenario h3 {
+        margin-bottom: 0.7rem;
+      }
+
+      .purple-box {
+        background: linear-gradient(135deg, #0d1f2d 0%, #1d3a52 100%);
+        color: var(--white);
+        border-radius: 28px;
+        padding: 2.5rem;
+      }
+
+      .purple-box h2,
+      .purple-box h3,
+      .purple-box p,
+      .purple-box li {
+        color: var(--white);
+      }
+
+      .feature-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .feature-list .feature-item {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 18px;
+        padding: 1.2rem;
+      }
+
+      .feature-item strong {
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+
+      .about-grid,
+      .team-grid,
+      .resource-grid,
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .profile {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #dfeef8 0%, #d5dfe9 100%);
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: var(--navy);
+        margin-bottom: 1rem;
+      }
+
+      .profile h3 {
+        margin-bottom: 0.3rem;
+      }
+
+      .profile .meta {
+        color: var(--accent-deep);
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .story-block {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 2rem;
+      }
+
+      .case-study,
+      .resource-card,
+      .testimonial,
+      .faq-item,
+      .contact-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 1.4rem;
+        box-shadow: var(--shadow);
+      }
+
+      .case-study strong,
+      .resource-card strong {
+        display: block;
+        color: var(--accent-deep);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .quote {
+        font-size: 1.1rem;
+        color: var(--navy);
+        margin-bottom: 1rem;
+      }
+
+      .author {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .faq-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      details {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1rem 1.15rem;
+      }
+
+      details summary {
+        cursor: pointer;
+        font-weight: 700;
+        color: var(--navy);
+        list-style: none;
+      }
+
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details p {
+        margin-top: 0.8rem;
+      }
+
+      .form-shell {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+      }
+
+      .multi-step {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .step-group {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.1rem;
+      }
+
+      .step-group h3 {
+        margin-bottom: 1rem;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .form-note {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .consent {
+        margin-top: 1rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .contact-grid {
+        align-items: start;
+      }
+
+      .contact-card {
+        min-height: 100%;
+      }
+
+      .contact-card h3 {
+        margin-bottom: 0.7rem;
+      }
+
+      .map-box {
+        min-height: 300px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #eaf4fb 0%, #ddeaf3 100%);
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        color: var(--navy);
+        font-weight: 700;
+      }
+
+      .legal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .legal-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.2rem;
+      }
+
+      footer {
+        background: var(--navy);
+        color: rgba(255,255,255,0.8);
+      }
+
+      .footer-wrap {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
+        gap: 1.5rem;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-wrap h4 {
+        color: var(--white);
+        margin-bottom: 1rem;
+      }
+
+      .footer-wrap a,
+      .footer-wrap li,
+      .footer-wrap p {
+        color: rgba(255,255,255,0.72);
+      }
+
+      .footer-wrap ul {
+        display: grid;
+        gap: 0.55rem;
+      }
+
+      .legal-strip {
+        border-top: 1px solid rgba(255,255,255,0.12);
+        padding: 1rem 0 2rem;
+      }
+
+      .legal-strip .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .cta-fixed {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 60;
+      }
+
+      .cta-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--accent);
+        border-radius: 999px;
+        padding: 0.9rem 1.2rem;
+        color: var(--navy);
+        font-weight: 800;
+        box-shadow: 0 14px 30px rgba(13, 31, 45, 0.18);
+      }
+
+      @media (max-width: 980px) {
+        .hero-inner,
+        .split,
+        .calculator-wrap,
+        .faq-wrap,
+        .about-grid,
+        .team-grid,
+        .resource-grid,
+        .contact-grid,
+        .footer-wrap {
+          grid-template-columns: 1fr;
+        }
+
+        .cards,
+        .industry-grid,
+        .scenario-grid,
+        .feature-list,
+        .steps,
+        .trust-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .menu {
+          display: none;
+          position: absolute;
+          top: 78px;
+          left: 1rem;
+          right: 1rem;
+          background: rgba(255,255,255,0.98);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          padding: 1rem;
+          flex-direction: column;
+          align-items: flex-start;
+          box-shadow: var(--shadow);
+        }
+
+        .menu.open {
+          display: flex;
+        }
+
+        .burger {
+          display: block;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-copy {
+          padding-top: 3.5rem;
+        }
+
+        .cards,
+        .industry-grid,
+        .scenario-grid,
+        .feature-list,
+        .steps,
+        .trust-grid,
+        .grid-2,
+        .legal-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-wrap {
+          min-height: 70px;
+        }
+
+        .nav-cta {
+          display: none;
+        }
+
+        .button,
+        .button-ghost {
+          width: 100%;
+        }
+
+        .cta-row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="FP1 Finance home">
+          <span class="brand-mark">FP1</span>
+          <span>FP1 Finance</span>
+        </a>
+
+        <nav class="menu" aria-label="Main navigation">
+          <a href="#home">Home</a>
+          <a href="#business-loans">Business Loans</a>
+          <a href="#asset-finance">Asset Finance</a>
+          <a href="#who-we-help">Who We Help</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#about">About Us</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <a href="#enquiry" class="nav-cta">Apply for Finance</a>
+
+        <button class="burger" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow" style="background: rgba(212,154,61,0.15); color: #f8d9a3;">Specialist Business Finance</span>
+            <h1>Business Finance Without the One-Size-Fits-All Approach.</h1>
+            <p>
+              FP1 Finance helps businesses access practical funding solutions for growth, working capital,
+              equipment, vehicles and expansion. We work with business owners to understand the opportunity,
+              review suitable options and support a clear path to finance.
+            </p>
+
+            <div class="cta-row">
+              <a href="#enquiry" class="button">Apply for Business Finance</a>
+              <a href="#contact" class="button-ghost">Speak to a Finance Specialist</a>
+            </div>
+
+            <div class="trust-badges" aria-label="Trust indicators">
+              <span class="badge">Business-focused finance</span>
+              <span class="badge">Tailored solutions</span>
+              <span class="badge">Clear guidance</span>
+            </div>
+          </div>
+
+          <aside class="hero-card" aria-label="Overview of finance options">
+            <div class="mini-panel">
+              <strong>Finance support</strong>
+              <span>Built around your business</span>
+            </div>
+
+            <h3>Funding solutions for real business needs</h3>
+
+            <ul class="list-check">
+              <li>Business loans for growth, cash flow and investment</li>
+              <li>Asset finance for equipment, vehicles and commercial assets</li>
+              <li>Flexible structures designed around business requirements</li>
+              <li>Professional guidance from initial enquiry through to approval</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <div class="trust-strip" aria-label="Trust indicators bar">
+        <div class="container trust-grid">
+          <div class="trust-item">
+            <strong>Experienced team</strong>
+            <span>Business finance specialists</span>
+          </div>
+          <div class="trust-item">
+            <strong>Tailored approach</strong>
+            <span>Finance based on your needs</span>
+          </div>
+          <div class="trust-item">
+            <strong>Multiple options</strong>
+            <span>Where suitable and appropriate</span>
+          </div>
+          <div class="trust-item">
+            <strong>Clear process</strong>
+            <span>Simple steps and transparent guidance</span>
+          </div>
+          <div class="trust-item">
+            <strong>Commercially minded</strong>
+            <span>Focused on business goals</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="section" id="solutions">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Finance solutions</span>
+            <h2>Finance Solutions for Your Business</h2>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <span class="card-tag">Business finance</span>
+              <h3>Business Loans</h3>
+              <p>Flexible funding to support working capital, expansion, investment and day-to-day business operations.</p>
+              <ul>
+                <li>Working capital</li>
+                <li>Growth and expansion</li>
+                <li>Stock, recruitment and marketing</li>
+              </ul>
+              <a href="#business-loans" class="link-arrow">Explore Business Loans →</a>
+            </article>
+
+            <article class="card">
+              <span class="card-tag">Asset-based</span>
+              <h3>Asset Finance</h3>
+              <p>Access funding to acquire plant, machinery, technology, office equipment and commercial vehicles.</p>
+              <ul>
+                <li>Machinery and equipment</li>
+                <li>Commercial vehicles</li>
+                <li>Technology and essential assets</li>
+              </ul>
+              <a href="#asset-finance" class="link-arrow">Explore Asset Finance →</a>
+            </article>
+
+            <article class="card">
+              <span class="card-tag">Equipment</span>
+              <h3>Equipment Finance</h3>
+              <p>Finance essential business equipment without tying up large amounts of capital upfront.</p>
+              <ul>
+                <li>Manufacturing machinery</li>
+                <li>Medical and office equipment</li>
+                <li>Technology and operational tools</li>
+              </ul>
+              <a href="#asset-finance" class="link-arrow">Explore Equipment Finance →</a>
+            </article>
+
+            <article class="card">
+              <span class="card-tag">Vehicle</span>
+              <h3>Vehicle Finance</h3>
+              <p>Support the acquisition of commercial vehicles and fleet requirements for operational continuity.</p>
+              <ul>
+                <li>Commercial vans</li>
+                <li>Fleet vehicles</li>
+                <li>Logistics and transport needs</li>
+              </ul>
+              <a href="#asset-finance" class="link-arrow">Explore Vehicle Finance →</a>
+            </article>
+
+            <article class="card">
+              <span class="card-tag">Cash flow</span>
+              <h3>Working Capital</h3>
+              <p>Funding to assist with seasonal demand, short-term cash flow management and business continuity.</p>
+              <ul>
+                <li>Inventory purchases</li>
+                <li>Supplier commitments</li>
+                <li>Operational flexibility</li>
+              </ul>
+              <a href="#business-loans" class="link-arrow">Explore Working Capital →</a>
+            </article>
+
+            <article class="card">
+              <span class="card-tag">Growth</span>
+              <h3>Business Expansion</h3>
+              <p>Finance to support new premises, recruitments, product investment and strategic business growth.</p>
+              <ul>
+                <li>Expansion plans</li>
+                <li>Site or premises upgrades</li>
+                <li>Investment in new revenue streams</li>
+              </ul>
+              <a href="#business-loans" class="link-arrow">Explore Expansion Finance →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="business-loans">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">Business loans</span>
+            <h2>Funding designed around business priorities.</h2>
+            <p>
+              A business loan can be used to support a wide range of commercial activities, depending on the
+              lender, the business profile and the purpose of the finance. At FP1 Finance, we help businesses
+              review whether this type of funding fits their need and how it may be structured appropriately.
+            </p>
+
+            <ul class="check-list">
+              <li>Working capital to support trading, seasonal fluctuations and operating expenses.</li>
+              <li>Investing in growth, expansion, marketing, recruitment or new business opportunities.</li>
+              <li>Purchasing stock, inventory and essential goods for business continuity.</li>
+              <li>Refurbishment, fit-out, property improvements or business upgrades.</li>
+              <li>Business acquisition, strategic investment or other approved business purposes.</li>
+            </ul>
+          </div>
+
+          <div class="info-panel">
+            <h3>What can a business loan be used for?</h3>
+            <p>Common uses can include:</p>
+            <ul class="check-list">
+              <li>Working capital and daily cash flow management</li>
+              <li>Expansion, hiring and new market entry</li>
+              <li>Stock, inventory and supplier commitments</li>
+              <li>Business refurbishment and infrastructure</li>
+              <li>Marketing campaigns and customer acquisition</li>
+              <li>Other approved business purposes subject to lender criteria</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+              Eligibility, terms, rates and loan amounts depend on the lender, the applicant circumstances and
+              the purpose of the finance. The right structure depends on the business and its commercial needs.
+            </p>
+            <a href="#enquiry" class="button" style="margin-top: 1rem;">Explore Business Loans</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="asset-finance">
+        <div class="container split">
+          <div class="info-panel">
+            <span class="eyebrow">Asset finance</span>
+            <h2>Finance the assets that help your business perform.</h2>
+            <p>
+              Asset finance enables businesses to acquire the equipment, vehicles or technology they need without
+              necessarily paying the full purchase price upfront. This may help preserve cash flow and spread the cost
+              over an agreed term.
+            </p>
+            <ul class="check-list">
+              <li>Machinery and production equipment</li>
+              <li>Commercial vehicles and fleet assets</li>
+              <li>Technology, office equipment and specialist systems</li>
+              <li>Construction, agricultural and manufacturing assets</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Typical asset categories</h3>
+            <ul class="check-list">
+              <li>Plant and machinery</li>
+              <li>Commercial vehicles and vans</li>
+              <li>Construction and industrial equipment</li>
+              <li>Medical and office equipment</li>
+              <li>Technology and essential commercial systems</li>
+              <li>Agricultural and specialist business assets</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+              Common structures may include hire purchase, finance lease, operating lease or other arrangements
+              depending on the asset type and business requirements. Availability varies by lender and finance
+              structure.
+            </p>
+            <a href="#enquiry" class="button" style="margin-top: 1rem;">Explore Asset Finance</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="specialist">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Why choose a specialist</span>
+            <h2>Finance guidance built around your business.</h2>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <span class="card-tag">Understanding</span>
+              <h3>Business circumstances matter</h3>
+              <p>We look beyond a generic application and focus on the actual business picture, trading profile and funding need.</p>
+            </article>
+            <article class="card">
+              <span class="card-tag">Access</span>
+              <h3>Options and structure</h3>
+              <p>Where appropriate, we can assess suitable finance options and help compare structures that align with the business goal.</p>
+            </article>
+            <article class="card">
+              <span class="card-tag">Support</span>
+              <h3>Application guidance</h3>
+              <p>We help clients understand what information is likely to be required and how to present the case clearly.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">How it works</span>
+            <h2>A straightforward finance process.</h2>
+          </div>
+
+          <div class="steps">
+            <article class="step">
+              <div class="step-number">1</div>
+              <h3>Tell us about your business</h3>
+              <p>Share your business details, trading profile and the funding requirement.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">2</div>
+              <h3>Speak with a specialist</h3>
+              <p>Discuss the purpose of the finance and the options that may suit your circumstances.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">3</div>
+              <h3>Review suitable options</h3>
+              <p>We assess the funding need and identify suitable routes, lenders and structures where available.</p>
+            </article>
+            <article class="step">
+              <div class="step-number">4</div>
+              <h3>Approval and funding</h3>
+              <p>Once approved and accepted, the agreed finance is documented and funded according to the terms.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="calculator">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Indicative calculator</span>
+            <h2>Estimate your finance position.</h2>
+          </div>
+
+          <div class="calculator-wrap">
+            <div class="calculator">
+              <div class="field">
+                <label for="financeType">Finance type</label>
+                <select id="financeType">
+                  <option value="business-loan">Business Loan</option>
+                  <option value="asset-finance">Asset Finance</option>
+                  <option value="equipment-finance">Equipment Finance</option>
+                  <option value="vehicle-finance">Vehicle Finance</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="amount">Amount required</label>
+                <input id="amount" type="number" min="1000" step="500" value="50000" placeholder="50000" />
+              </div>
+
+              <div class="field">
+                <label for="term">Term</label>
+                <input id="term" type="number" min="12" max="120" step="12" value="60" placeholder="60" />
+              </div>
+
+              <div class="field">
+                <label for="rate">Estimated APR</label>
+                <input id="rate" type="number" min="0" max="100" step="0.1" value="7.5" placeholder="7.5" />
+              </div>
+
+              <a href="#enquiry" class="button">Discuss Your Finance Options</a>
+            </div>
+
+            <div class="calculator-result">
+              <h3>Indicative estimate</h3>
+              <div class="result-grid">
+                <div class="result-row"><span>Estimated monthly payment</span><strong id="monthlyPayment">£1,000</strong></div>
+                <div class="result-row"><span>Estimated total repayment</span><strong id="totalRepayment">£60,000</strong></div>
+                <div class="result-row"><span>Estimated interest / finance cost</span><strong id="totalInterest">£10,000</strong></div>
+              </div>
+
+              <p style="margin-top: 1rem;">
+                This calculator is for illustrative purposes only. It does not constitute an offer of finance.
+                Actual rates, fees, repayment amounts, terms and eligibility are subject to assessment and lender approval.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="who-we-help">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Who we help</span>
+            <h2>Supporting businesses across a wide range of sectors.</h2>
+          </div>
+
+          <div class="industry-grid">
+            <article class="industry">
+              <h3>Construction</h3>
+              <p>Finance for plant, machinery, commercial vehicles and working capital requirements.</p>
+              <a href="#enquiry" class="link-arrow">Explore Construction Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Manufacturing</h3>
+              <p>Funding for production equipment, automation, tooling and operational investment.</p>
+              <a href="#enquiry" class="link-arrow">Explore Manufacturing Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Logistics & Transport</h3>
+              <p>Commercial vehicle finance, equipment funding and working capital to support fleet operations.</p>
+              <a href="#enquiry" class="link-arrow">Explore Transport Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Retail</h3>
+              <p>Stock funding, premises adjustments, expansion support and inventory management.</p>
+              <a href="#enquiry" class="link-arrow">Explore Retail Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Hospitality</h3>
+              <p>Finance for refurbishment, equipment, working capital and growth plans.</p>
+              <a href="#enquiry" class="link-arrow">Explore Hospitality Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Healthcare</h3>
+              <p>Funding for specialised equipment, practice growth and operational investment.</p>
+              <a href="#enquiry" class="link-arrow">Explore Healthcare Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Professional Services</h3>
+              <p>Working capital and investment support for service-led businesses and expanding teams.</p>
+              <a href="#enquiry" class="link-arrow">Explore Professional Service Finance →</a>
+            </article>
+            <article class="industry">
+              <h3>Technology</h3>
+              <p>Finance to support digital infrastructure, hardware, software and expansion plans.</p>
+              <a href="#enquiry" class="link-arrow">Explore Tech Finance →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="scenarios">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Business scenarios</span>
+            <h2>Finance needs vary by business.</h2>
+          </div>
+
+          <div class="scenario-grid">
+            <article class="scenario">
+              <h3>Need new equipment?</h3>
+              <p>Equipment finance may provide a practical route to acquire essential machinery and operational tools.</p>
+            </article>
+            <article class="scenario">
+              <h3>Expanding into a new location?</h3>
+              <p>Business expansion finance may support premises, set-up costs and growth investments.</p>
+            </article>
+            <article class="scenario">
+              <h3>Replacing commercial vehicles?</h3>
+              <p>Vehicle finance may help acquire required vans, trucks or fleet assets over time.</p>
+            </article>
+            <article class="scenario">
+              <h3>Managing a temporary cash-flow gap?</h3>
+              <p>A business loan or working capital facility may help support business continuity and trading periods.</p>
+            </article>
+            <article class="scenario">
+              <h3>Investing in growth?</h3>
+              <p>Finance can support expansion, stock purchases, recruitment and new commercial opportunities.</p>
+            </article>
+            <article class="scenario">
+              <h3>Funding a business acquisition?</h3>
+              <p>Acquisition funding may be relevant in suitable circumstances, subject to commercial assessment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="why-choose-us">
+        <div class="container">
+          <div class="purple-box">
+            <span class="eyebrow" style="background: rgba(255,255,255,0.1); color: #f9d596;">Why choose FP1</span>
+            <h2>Professional guidance for business finance decisions.</h2>
+            <div class="feature-list">
+              <div class="feature-item">
+                <strong>Experienced specialists</strong>
+                <span>We work with businesses to understand their needs and funding goals.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Personal service</strong>
+                <span>Clear communication and a straightforward process with practical support.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Tailored finance</strong>
+                <span>We review suitable options rather than taking a generic one-size-fits-all approach.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Lender relationships</strong>
+                <span>We assess finance routes based on the business requirement and lender criteria.</span>
+              </div>
+              <div class="feature-item">
+                <strong>SME understanding</strong>
+                <span>We focus on the realities of running and growing a business.</span>
+              </div>
+              <div class="feature-item">
+                <strong>Transparent approach</strong>
+                <span>Our guidance is designed to help businesses make informed decisions.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">About us</span>
+            <h2>Finance support built on commercial understanding.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="story-block">
+              <h3>Our story</h3>
+              <p>
+                FP1 Finance was established to provide practical, commercially focused finance support to businesses
+                that need more than a generic online application. We understand that every business has different needs,
+                different trading circumstances and different plans for growth.
+              </p>
+              <p>
+                Our approach is to listen carefully, review the purpose of the funding and identify finance structures that
+                may be relevant. We work with businesses across a range of sectors and help them navigate the options with
+                clear, informed guidance.
+              </p>
+            </div>
+
+            <div class="story-block">
+              <h3>Why we exist</h3>
+              <p>
+                We believe finance should be understandable and structured around the actual needs of the business. Whether
+                the objective is to manage cash flow, invest in equipment, support expansion or improve working capital,
+                funding should be reviewed thoughtfully and professionally.
+              </p>
+              <p>
+                Our role is to help business owners understand their options, prepare their application and proceed with confidence.
+              </p>
+            </div>
+
+            <div class="story-block">
+              <h3>Our philosophy</h3>
+              <p>
+                We aim to create long-term relationships with the businesses we support. That means clear communication,
+                realistic expectations and practical advice that helps owners move forward with informed decisions.
+              </p>
+              <p>
+                We are here to help businesses assess the right finance route, not simply push them into a generic product.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="team">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Our team</span>
+            <h2>Experienced finance professionals with a business-first mindset.</h2>
+          </div>
+
+          <div class="team-grid">
+            <article class="profile">
+              <div class="avatar">AD</div>
+              <h3>[Director Name]</h3>
+              <div class="meta">Managing Director</div>
+              <p>[Years] of experience in commercial finance and business funding.</p>
+              <p>Area of expertise: Business loans, growth funding and commercial finance strategy.</p>
+            </article>
+            <article class="profile">
+              <div class="avatar">SM</div>
+              <h3>[Senior Manager Name]</h3>
+              <div class="meta">Head of Lending</div>
+              <p>[Years] of finance experience supporting SMEs, asset finance and lender relationships.</p>
+              <p>Area of expertise: Asset finance, equipment funding and structured commercial solutions.</p>
+            </article>
+            <article class="profile">
+              <div class="avatar">JP</div>
+              <h3>[Advisor Name]</h3>
+              <div class="meta">Business Finance Advisor</div>
+              <p>Supporting businesses with funding requirements, application preparation and commercial guidance.</p>
+              <p>Area of expertise: Working capital, expansion financing and business support.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="case-studies">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Case studies</span>
+            <h2>Examples of the kind of business funding discussions we support.</h2>
+          </div>
+
+          <div class="about-grid">
+            <article class="case-study">
+              <strong>Case Study</strong>
+              <h3>[Business Name]</h3>
+              <p><strong>Industry:</strong> [Industry]</p>
+              <p><strong>Challenge:</strong> [Brief description of the business need.]</p>
+              <p><strong>Solution:</strong> [Finance solution arranged or discussed.]</p>
+              <p><strong>Outcome:</strong> [Funding enabled support for growth, equipment, working capital or expansion.]</p>
+            </article>
+            <article class="case-study">
+              <strong>Case Study</strong>
+              <h3>[Business Name]</h3>
+              <p><strong>Industry:</strong> [Industry]</p>
+              <p><strong>Challenge:</strong> [Brief description of the business need.]</p>
+              <p><strong>Solution:</strong> [Finance solution arranged or discussed.]</p>
+              <p><strong>Outcome:</strong> [Funding enabled support for growth, equipment, working capital or expansion.]</p>
+            </article>
+            <article class="case-study">
+              <strong>Case Study</strong>
+              <h3>[Business Name]</h3>
+              <p><strong>Industry:</strong> [Industry]</p>
+              <p><strong>Challenge:</strong> [Brief description of the business need.]</p>
+              <p><strong>Solution:</strong> [Finance solution arranged or discussed.]</p>
+              <p><strong>Outcome:</strong> [Funding enabled support for growth, equipment, working capital or expansion.]</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="testimonials">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Testimonials</span>
+            <h2>Client feedback and business experiences.</h2>
+          </div>
+
+          <div class="about-grid">
+            <article class="testimonial">
+              <p class="quote">“[Customer quote]”</p>
+              <div class="author">[Customer Name]<br />[Company Name] · [Industry]</div>
+            </article>
+            <article class="testimonial">
+              <p class="quote">“[Customer quote]”</p>
+              <div class="author">[Customer Name]<br />[Company Name] · [Industry]</div>
+            </article>
+            <article class="testimonial">
+              <p class="quote">“[Customer quote]”</p>
+              <div class="author">[Customer Name]<br />[Company Name] · [Industry]</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="resources">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Resources</span>
+            <h2>Useful insight for business owners exploring finance.</h2>
+          </div>
+
+          <div class="resource-grid">
+            <article class="resource-card">
+              <strong>Business finance guides</strong>
+              <h3>How Business Loans Work</h3>
+              <p>A practical overview of the purpose, structure and considerations involved in business funding.</p>
+            </article>
+            <article class="resource-card">
+              <strong>Loan guides</strong>
+              <h3>Business Loan vs Asset Finance</h3>
+              <p>How these two common finance routes differ and when businesses may consider one over the other.</p>
+            </article>
+            <article class="resource-card">
+              <strong>Asset finance</strong>
+              <h3>How Asset Finance Helps Businesses Invest</h3>
+              <p>A look at how funding can support essential equipment, vehicles and operational growth.</p>
+            </article>
+            <article class="resource-card">
+              <strong>Finance calculators</strong>
+              <h3>How Much Business Finance Does My Company Need?</h3>
+              <p>Questions to consider before approaching lenders or discussing available funding options.</p>
+            </article>
+            <article class="resource-card">
+              <strong>Business insights</strong>
+              <h3>Preparing for a Business Finance Application</h3>
+              <p>What information and documentation may be useful when reviewing a funding proposal.</p>
+            </article>
+            <article class="resource-card">
+              <strong>Glossary</strong>
+              <h3>Hire Purchase vs Leasing</h3>
+              <p>Understanding common asset finance structures to help compare suitable outcomes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">FAQs</span>
+            <h2>Common questions from business owners.</h2>
+          </div>
+
+          <div class="faq-wrap">
+            <details open>
+              <summary>What is a business loan?</summary>
+              <p>A business loan is a form of commercial finance designed to support a business with funding for approved purposes, subject to lender criteria and the applicant profile.</p>
+            </details>
+            <details>
+              <summary>What can a business loan be used for?</summary>
+              <p>Business loans may be used for working capital, expansion, stock, refurbishment, recruitment, marketing and other approved business purposes depending on the lender and circumstances.</p>
+            </details>
+            <details>
+              <summary>What is asset finance?</summary>
+              <p>Asset finance allows a business to acquire essential equipment, plant, vehicles or technology and spread the cost over an agreed term, subject to approval and product availability.</p>
+            </details>
+            <details>
+              <summary>What assets can be financed?</summary>
+              <p>Depending on the lender and the product, assets may include machinery, commercial vehicles, office equipment, technology, medical equipment, agricultural or specialist business assets.</p>
+            </details>
+            <details>
+              <summary>How much can my business borrow?</summary>
+              <p>Borrowing capacity depends on the lender, business profile, trading history, affordability and purpose of the finance. There is no single amount that applies to every business.</p>
+            </details>
+            <details>
+              <summary>What affects the interest rate?</summary>
+              <p>Relevant factors typically include the type of finance, amount, term, asset or business profile, risk assessment and lender criteria. Actual rates vary by provider and application.</p>
+            </details>
+            <details>
+              <summary>How long can business finance run?</summary>
+              <p>Terms depend on the product, lender and business circumstances. The term will be discussed with the lender and may vary considerably by asset or funding type.</p>
+            </details>
+            <details>
+              <summary>Can start-ups apply?</summary>
+              <p>In some cases, businesses with limited trading history may still be considered, although eligibility depends on the lender, the business profile and the nature of the finance request.</p>
+            </details>
+            <details>
+              <summary>What information do I need to provide?</summary>
+              <p>Typically, businesses may be asked for information such as trading details, ownership structure, recent accounts, cash flow information, and the purpose of the funding. Requirements vary by application and lender.</p>
+            </details>
+            <details>
+              <summary>Will applying affect my credit score?</summary>
+              <p>Credit checks and affordability assessments may form part of the lender review process. The exact impact depends on the application and lender process.</p>
+            </details>
+            <details>
+              <summary>How long does the application process take?</summary>
+              <p>Timescales vary depending on the product, complexity and lender process. We can help businesses prepare documentation and understand likely steps in the process.</p>
+            </details>
+            <details>
+              <summary>Can I repay finance early?</summary>
+              <p>Early repayment may be permitted in some cases, but terms and fees depend on the lender and product. It is important to check the agreement before proceeding.</p>
+            </details>
+            <details>
+              <summary>Do I need security?</summary>
+              <p>Security requirements vary by product, lender and applicant profile. Some forms of finance may require security or personal guarantees, depending on the arrangement.</p>
+            </details>
+            <details>
+              <summary>Do you work with multiple lenders?</summary>
+              <p>Where relevant, we assess suitable finance options and may approach lenders based on the business requirement and the circumstances of the application.</p>
+            </details>
+            <details>
+              <summary>What happens after I submit an enquiry?</summary>
+              <p>We review the enquiry details, discuss the business requirement and determine the most relevant next steps, including whether further information or lender assessment is appropriate.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="enquiry">
+        <div class="container split">
+          <div>
+            <span class="eyebrow">Apply for finance</span>
+            <h2>Tell us about your business and finance requirement.</h2>
+            <p>
+              Whether you need funding for expansion, equipment, working capital or operational investment, we can
+              help you understand the options and prepare a clear application. We’ll review your enquiry and advise
+              on the next appropriate steps.
+            </p>
+
+            <ul class="check-list">
+              <li>Business-focused support with practical guidance</li>
+              <li>Transparent discussion about suitable finance routes</li>
+              <li>Clear next steps and application preparation</li>
+            </ul>
+          </div>
+
+          <div class="form-shell">
+            <form class="multi-step" aria-label="Finance enquiry form">
+              <div class="step-group">
+                <h3>Step 1 — About you</h3>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="fullName">Full Name</label>
+                    <input id="fullName" type="text" placeholder="Your full name" />
+                  </div>
+                  <div class="field">
+                    <label for="businessName">Business Name</label>
+                    <input id="businessName" type="text" placeholder="Business name" />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="name@email.com" />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" type="tel" placeholder="Phone number" />
+                  </div>
+                  <div class="field" style="grid-column: 1 / -1;">
+                    <label for="position">Position</label>
+                    <input id="position" type="text" placeholder="Owner, Director, Manager..." />
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-group">
+                <h3>Step 2 — About your business</h3>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="businessType">Business Type</label>
+                    <input id="businessType" type="text" placeholder="Sole trader, Ltd, partnership..." />
+                  </div>
+                  <div class="field">
+                    <label for="industry">Industry</label>
+                    <input id="industry" type="text" placeholder="Industry sector" />
+                  </div>
+                  <div class="field">
+                    <label for="yearsTrading">Years Trading</label>
+                    <input id="yearsTrading" type="text" placeholder="e.g. 5 years" />
+                  </div>
+                  <div class="field">
+                    <label for="turnover">Annual Turnover</label>
+                    <input id="turnover" type="text" placeholder="£ / $ / €" />
+                  </div>
+                  <div class="field" style="grid-column: 1 / -1;">
+                    <label for="location">Location</label>
+                    <input id="location" type="text" placeholder="Town / City / Country" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-group">
+                <h3>Step 3 — Finance requirement</h3>
+                <div class="grid-2">
+                  <div class="field">
+                    <label for="financeTypeChoice">Finance Type</label>
+                    <select id="financeTypeChoice">
+                      <option>Business Loan</option>
+                      <option>Asset Finance</option>
+                      <option>Equipment Finance</option>
+                      <option>Vehicle Finance</option>
+                      <option>Working Capital</option>
+                      <option>Business Expansion</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="amountRequired">Amount Required</label>
+                    <input id="amountRequired" type="text" placeholder="£ / $ / €" />
+                  </div>
+                  <div class="field">
+                    <label for="purpose">Purpose</label>
+                    <input id="purpose" type="text" placeholder="Funding purpose" />
+                  </div>
+                  <div class="field">
+                    <label for="preferredTerm">Preferred Term</label>
+                    <input id="preferredTerm" type="text" placeholder="e.g. 24 to 60 months" />
+                  </div>
+                  <div class="field">
+                    <label for="assetType">Asset Type (if applicable)</label>
+                    <input id="assetType" type="text" placeholder="Machinery, vehicle, equipment..." />
+                  </div>
+                  <div class="field">
+                    <label for="assetValue">Asset Value (if applicable)</label>
+                    <input id="assetValue" type="text" placeholder="£ / $ / €" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="step-group">
+                <h3>Step 4 — Additional information</h3>
+                <div class="field">
+                  <label for="existingFinance">Existing Finance</label>
+                  <textarea id="existingFinance" rows="3" placeholder="Do you have any existing loan, lease or finance arrangements?"></textarea>
+                </div>
+                <div class="field">
+                  <label for="notes">Additional Notes</label>
+                  <textarea id="notes" rows="4" placeholder="Tell us about your business and the funding need."></textarea>
+                </div>
+                <div class="field">
+                  <label for="contactMethod">Preferred Contact Method</label>
+                  <select id="contactMethod">
+                    <option>Phone</option>
+                    <option>Email</option>
+                    <option>WhatsApp</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="button" style="width: 100%;">Submit Finance Enquiry</button>
+              <p class="consent">
+                By submitting this form, you consent to being contacted about your enquiry in accordance with our privacy policy and applicable data protection requirements.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Contact</span>
+            <h2>Let’s talk about your business finance requirements.</h2>
+            <p>Speak with an experienced finance professional before making decisions about your business funding options.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Contact details</h3>
+              <p><strong>Phone:</strong> [PHONE]</p>
+              <p><strong>Email:</strong> [EMAIL]</p>
+              <p><strong>Address:</strong> [ADDRESS]</p>
+              <p><strong>Opening hours:</strong> [MONDAY–FRIDAY / HOURS]</p>
+              <p><strong>WhatsApp:</strong> [WHATSAPP]</p>
+              <a href="#enquiry" class="button" style="margin-top: 1rem;">Request a Quote</a>
+            </div>
+
+            <div class="contact-card">
+              <h3>Send a message</h3>
+              <form>
+                <div class="field">
+                  <label for="contactName">Name</label>
+                  <input id="contactName" type="text" placeholder="Your name" />
+                </div>
+                <div class="field">
+                  <label for="contactEmail">Email</label>
+                  <input id="contactEmail" type="email" placeholder="Your email" />
+                </div>
+                <div class="field">
+                  <label for="message">Message</label>
+                  <textarea id="message" rows="5" placeholder="Tell us how we can help."></textarea>
+                </div>
+                <button type="submit" class="button" style="width: 100%;">Send Message</button>
+              </form>
+            </div>
+
+            <div class="map-box">Map / service area</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="compliance">
+        <div class="container">
+          <div class="section-header">
+            <span class="eyebrow">Trust & compliance</span>
+            <h2>Clear information and responsible finance practices.</h2>
+          </div>
+
+          <div class="legal-grid">
+            <div class="legal-card">
+              <h3>Regulatory status</h3>
+              <p>[INSERT VERIFIED INFORMATION]</p>
+            </div>
+            <div class="legal-card">
+              <h3>Licensing</h3>
+              <p>[INSERT VERIFIED INFORMATION]</p>
+            </div>
+            <div class="legal-card">
+              <h3>Company registration</h3>
+              <p>[INSERT VERIFIED INFORMATION]</p>
+            </div>
+            <div class="legal-card">
+              <h3>Privacy policy</h3>
+              <p>We process information responsibly and in line with relevant data protection obligations.</p>
+            </div>
+            <div class="legal-card">
+              <h3>Terms & conditions</h3>
+              <p>All finance discussions and proposals are subject to applicable terms and lender approval where relevant.</p>
+            </div>
+            <div class="legal-card">
+              <h3>Cookie policy</h3>
+              <p>We use cookies to improve website performance and understand site usage in line with privacy requirements.</p>
+            </div>
+            <div class="legal-card">
+              <h3>Complaints procedure</h3>
+              <p>[INSERT VERIFIED INFORMATION]</p>
+            </div>
+            <div class="legal-card">
+              <h3>Responsible lending</h3>
+              <p>Finance should be appropriate to the business and its needs. We assess applications responsibly and support informed decisions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-wrap">
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Finance</h4>
+          <ul>
+            <li><a href="#business-loans">Business Loans</a></li>
+            <li><a href="#asset-finance">Asset Finance</a></li>
+            <li><a href="#solutions">Equipment Finance</a></li>
+            <li><a href="#solutions">Vehicle Finance</a></li>
+            <li><a href="#solutions">Working Capital</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#resources">Guides</a></li>
+            <li><a href="#calculator">Calculators</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#resources">Glossary</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#compliance">Privacy Policy</a></li>
+            <li><a href="#compliance">Terms & Conditions</a></li>
+            <li><a href="#compliance">Cookie Policy</a></li>
+            <li><a href="#compliance">Complaints</a></li>
+            <li><a href="#compliance">Regulatory Information</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>Phone: [PHONE]</li>
+            <li>Email: [EMAIL]</li>
+            <li>Address: [ADDRESS]</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="legal-strip">
+        <div class="container">
+          <span>© [YEAR] FP1 Finance. All rights reserved.</span>
+          <a href="#enquiry" class="button">Apply for Business Finance</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cta-fixed">
+      <a href="#enquiry" class="cta-pill">Apply for Finance</a>
+    </div>
+
+    <script>
+      const burger = document.querySelector('.burger');
+      const menu = document.querySelector('.menu');
+
+      if (burger && menu) {
+        burger.addEventListener('click', function () {
+          const isOpen = menu.classList.toggle('open');
+          burger.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      const financeType = document.getElementById('financeType');
+      const amountInput = document.getElementById('amount');
+      const termInput = document.getElementById('term');
+      const rateInput = document.getElementById('rate');
+      const monthlyPaymentEl = document.getElementById('monthlyPayment');
+      const totalRepaymentEl = document.getElementById('totalRepayment');
+      const totalInterestEl = document.getElementById('totalInterest');
+
+      function formatCurrency(value) {
+        return new Intl.NumberFormat('en-GB', {
+          style: 'currency',
+          currency: 'GBP',
+          maximumFractionDigits: 0
+        }).format(value);
+      }
+
+      function calculate() {
+        const amount = Number(amountInput.value || 0);
+        const termMonths = Number(termInput.value || 0);
+        const rate = Number(rateInput.value || 0) / 100;
+
+        if (!amount || !termMonths || !rate) {
+          monthlyPaymentEl.textContent = '£0';
+          totalRepaymentEl.textContent = '£0';
+          totalInterestEl.textContent = '£0';
+          return;
+        }
+
+        const monthlyRate = rate / 12;
+        const payment = monthlyRate > 0
+          ? amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -termMonths))
+          : amount / termMonths;
+
+        const totalRepayment = payment * termMonths;
+        const totalInterest = totalRepayment - amount;
+
+        monthlyPaymentEl.textContent = formatCurrency(payment);
+        totalRepaymentEl.textContent = formatCurrency(totalRepayment);
+        totalInterestEl.textContent = formatCurrency(totalInterest);
+      }
+
+      [financeType, amountInput, termInput, rateInput].forEach((field) => {
+        field.addEventListener('input', calculate);
+        field.addEventListener('change', calculate);
+      });
+
+      calculate();
+    </script>
+  </body>
+</html>
